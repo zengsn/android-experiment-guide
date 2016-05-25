@@ -1111,7 +1111,37 @@ private final class SensorListener implements SensorEventListener {
 GitHub代码：https://github.com/hzuapps/android-labs/tree/master/app/src/main/java/edu/hzuapps/androidworks/homeworks/net1314080903146
 
 ###7. 设置音量
-
+####1.定义相关变量
+```
+    private AudioManager audioManager; //音频管理器
+    private TextView volumeView;//显示音量
+    private SeekBar SoundseekBar;//拖动条
+```
+####2.音量相关服务的初始化(在oncreate（）里面）
 ```  
+        volumeView=(TextView)findViewById(R.id.tv);         //关联文本框
+        SoundseekBar=(SeekBar)findViewById(R.id.seekBar);         //关联拖动条
+        audioManager=(AudioManager)getSystemService(AUDIO_SERVICE);//获取音量服务
+        int MaxSound=audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);//获取系统音量最大值
+        SoundseekBar.setMax(MaxSound);//音量控制Bar的最大值设置为系统音量最大值
+        int currentSount=audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);//获取当前音量
+        final int excurrentSount=currentSount;
+        SoundseekBar.setProgress(currentSount);//音量控制Bar的当前值设置为系统音量当前值
+        SoundseekBar.setOnSeekBarChangeListener(new SeekBarListener());        //设置拖动条
+```
+####3.拖动条的监听函数
+```
+    class SeekBarListener implements SeekBar.OnSeekBarChangeListener {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress,
+                                      boolean fromUser) {
+            // TODO Auto-generated method stub
+            if (fromUser) {
+                int SeekPosition=seekBar.getProgress();//获取进度条数字
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, SeekPosition, 0);        //设置音量
+            }
+            volumeView.setText(String.valueOf(progress));
+        }
+        
+```
 
-```  
