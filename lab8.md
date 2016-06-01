@@ -1199,6 +1199,7 @@ GitHub代码：https://github.com/hzuapps/android-labs/tree/master/app/src/main/
 
 ###9. 相机
 
+...
 
 
 
@@ -1210,17 +1211,20 @@ GitHub代码：https://github.com/hzuapps/android-labs/tree/master/app/src/main/
  <uses-permission android:name="android.permission.VIBRATE" />
 ####2. 创建加速度传感器
  public void start(){
+
         //获得传感器管理器
         sensorManager=(SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
         if(sensorManager!=null){
-            //获得加速度传感器
+            //获得加速度传感器  
             sensor=sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+            }
         //注册加速度传感器
         if(sensor!=null){
             sensorManager.registerListener(this,sensor,
                     SensorManager.SENSOR_DELAY_GAME);
         }
-    }
+    }  
+
     //加速度感应器感应获得变化数据
     public void onSensorChanged(SensorEvent event){
         //当前检查时间
@@ -1249,7 +1253,8 @@ GitHub代码：https://github.com/hzuapps/android-labs/tree/master/app/src/main/
         if(speed>=SPEED_SHRESHOLD)
     }
 ####3. 震动
-public void StartVibrato(){
+public void StartVibrato(){     
+
         //第一个参数是节奏数组
-        mVibrator.vibrate(new long[] { 500,200,500,200 },-1);
+        mVibrator.vibrate(new long[] { 500,200,500,200 },-1);  
     }
