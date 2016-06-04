@@ -120,3 +120,55 @@ AndroidManifest代码：(https://github.com/ZhengQZ123/android-labs/blob/master/
 
 activity xml代码：(https://github.com/ZhengQZ123/android-labs/blob/master/app/src/main/res/layout/activity_net1314080903247.xml)
 
+###4. RSS阅读器
+简要说明……  
+    1.什么是RSS？
+        RSS 指 Really Simple Syndication（真正简易联合）
+        RSS 使您有能力聚合（syndicate）网站的内容
+        RSS 定义了非常简单的方法来共享和查看标题和内容
+        RSS 文件可被自动更新
+        RSS 允许为不同的网站进行视图的个性化
+        RSS 使用 XML 编写
+    2.一个RSS实例文档
+    RSS 文档使用一种简单的自我描述的语法：
+    ```
+    <?xml version="1.0" encoding="ISO-8859-1" ?>
+<rss version="2.0">
+
+<channel>
+  <title>W3School Home Page</title>
+  <link>http://www.w3school.com.cn</link>
+  <description>Free web building tutorials</description>
+  <item>
+    <title>RSS Tutorial</title>
+    <link>http://www.w3school.com.cn/rss</link>
+    <description>New RSS tutorial on W3School</description>
+  </item>
+  <item>
+    <title>XML Tutorial</title>
+    <link>http://www.w3school.com.cn/xml</link>
+    <description>New XML tutorial on W3School</description>
+  </item>
+</channel>
+
+</rss>
+    ```
+    文档中的第一行：XML 声明 - 定义了文档中使用的 XML 版本和字符编码。此例子遵守 1.0 规范，并使用 ISO-8859-1 (Latin-1/West European) 字符集。
+下一行是标识此文档是一个 RSS 文档的 RSS 声明（此例是 RSS version 2.0）。
+下一行含有 <channel> 元素。此元素用于描述 RSS feed。
+<channel> 元素有三个必需的子元素：
+<title> - 定义频道的标题。（比如 w3school 首页）
+<link> - 定义到达频道的超链接。（比如 www.w3school.com.cn）
+<description> - 描述此频道（比如免费的网站建设教程）
+每个 <channel> 元素可拥有一个或多个 <item> 元素。
+每个 <item> 元素可定义 RSS feed 中的一篇文章或 "story"。
+<item> 元素拥有三个必需的子元素：
+<title> - 定义项目的标题。（比如 RSS 教程）
+<link> - 定义到达项目的超链接。（比如 http://www.w3school.com.cn/rss）
+<description> - 描述此项目（比如 w3school 的 RSS 教程）
+最后，后面的两行关闭 <channel> 和 <rss> 元素。
+详细步骤……  
+1. 获取网络权限
+```
+    <uses-permission android:name="android.permission.INTERNET"/>  
+```
