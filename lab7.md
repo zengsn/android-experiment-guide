@@ -154,20 +154,20 @@ activity xml代码：(https://github.com/ZhengQZ123/android-labs/blob/master/app
 
 </rss>
    ```
-   > 文档中的第一行：XML 声明 - 定义了文档中使用的 XML 版本和字符编码。此例子遵守 1.0 规范，并使用 ISO-8859-1 (Latin-1/West European) 字符集。
-> 下一行是标识此文档是一个 RSS 文档的 RSS 声明（此例是 RSS version 2.0）。
-> 下一行含有 <channel> 元素。此元素用于描述 RSS feed。
+> 文档中的第一行：XML 声明 - 定义了文档中使用的 XML 版本和字符编码。此例子遵守 1.0 规范，并使用 ISO-8859-1 (Latin-1/West European) 字符集。
+下一行是标识此文档是一个 RSS 文档的 RSS 声明（此例是 RSS version 2.0）。
+下一行含有 <channel> 元素。此元素用于描述 RSS feed。
 <channel> 元素有三个必需的子元素：
 <title> - 定义频道的标题。（比如 w3school 首页）
 <link> - 定义到达频道的超链接。（比如 www.w3school.com.cn）
 <description> - 描述此频道（比如免费的网站建设教程）
-> 每个 <channel> 元素可拥有一个或多个 <item> 元素。
-> 每个 <item> 元素可定义 RSS feed 中的一篇文章或 "story"。
+ 每个 <channel> 元素可拥有一个或多个 <item> 元素。
+ 每个 <item> 元素可定义 RSS feed 中的一篇文章或 "story"。
 <item> 元素拥有三个必需的子元素：
 <title> - 定义项目的标题。（比如 RSS 教程）
 <link> - 定义到达项目的超链接。（比如 http://www.w3school.com.cn/rss）
 <description> - 描述此项目（比如 w3school 的 RSS 教程）
-? 最后，后面的两行关闭 <channel> 和 <rss> 元素。
+最后，后面的两行关闭 <channel> 和 <rss> 元素。
 
 3.解析xml文件
  <br>这里采用的是SAX解析方法，SAX是一种占用内存少且解析速度快的解析器，它采用的是事件启动，它不需要解析完整个文档，而是按照内容顺序 看文档某个部分是否符合xml语法，如果符合就触发相应的事件，所谓的事件就是些回调方法（callback），这些方法定义在ContentHandler中，下面是其主要方法：
