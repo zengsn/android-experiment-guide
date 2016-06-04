@@ -308,3 +308,74 @@ public class RSSItem {
 }
 
 ```
+3.利用SAX进行解析
+```
+public RSSFeed loadData(String rssUrl) {
+		try {
+			try {
+				url = new URL(rssUrl);
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}
+			SAXParserFactory xFactory = SAXParserFactory.newInstance();//构建sax解析工厂
+			SAXParser parser = xFactory.newSAXParser();//解析工厂生产解析器
+			XMLReader xReader = parser.getXMLReader();//通过saxParser构建xmlReader阅读器
+           //构建自定义的xml解析器 作为 xmlReader的处理器（代理）
+			handler = new ReadHelper();
+			xReader.setContentHandler(handler);
+			//使用url打开流，并将流作为 xmlReader解析的输入源并解析
+			InputSource iSource = new InputSource(url.openStream());
+			xReader.parse(iSource);
+			return handler.getFeed();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+```
+4.RSS列表显示在UI中
+```
+public class RSSShowItem extends Activity{
+	private TextView txtContent;
+	private Button button;
+	
+	private String title,pubDate,description,link;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.list_showitem);
+		
+		txtContent = (TextView)findViewById(R.id.txt_content);
+		button = (Button)findViewById(R.id.btn_back);
+		button.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+			
+		});
+
+		Intent intent = getIntent();
+		if(intent != null){
+			Bundle bundle = intent.getBundleExtra("com.lq.showitem");
+			if(bundle != null){
+				title = bundle.getString("title");
+				pubDate = bundle.getString("pubDate");
+				description = bundle.getString("description");
+				link = bundle.getString("link");
+			}
+		}
+		txtContent.setText(title+"\n\n"+pubDate+"\n\n"+description+"\n\n"+link);
+	}
+	
+}
+
+```
+5.由于要访问网络，故在Manifest.xml文件中添加网络访问权限
+```
+    <uses-permission android:name="android.permission.INTERNET" />
+```
