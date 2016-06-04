@@ -132,7 +132,7 @@ activity xml代码：(https://github.com/ZhengQZ123/android-labs/blob/master/app
 
 2.一个RSS实例文档
 - RSS 文档使用一种简单的自我描述的语法：
-   ```
+```
    <?xml version="1.0" encoding="ISO-8859-1" ?>
 <rss version="2.0">
 
@@ -153,7 +153,7 @@ activity xml代码：(https://github.com/ZhengQZ123/android-labs/blob/master/app
 </channel>
 
 </rss>
-   ```
+```
 > 文档中的第一行：XML 声明 - 定义了文档中使用的 XML 版本和字符编码。此例子遵守 1.0 规范，并使用 ISO-8859-1 (Latin-1/West European) 字符集。
 下一行是标识此文档是一个 RSS 文档的 RSS 声明（此例是 RSS version 2.0）。
 下一行含有 <channel> 元素。此元素用于描述 RSS feed。
