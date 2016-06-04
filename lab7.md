@@ -194,3 +194,117 @@ activity xml代码：(https://github.com/ZhengQZ123/android-labs/blob/master/app
    // 从网络获取RSS地址
 	private static String strUrl = "http://rss.it.sohu.com/rss/ityaowen.xml";
 ```
+2.建立描述RSS信息的RssFeed和RssItem类
+```
+public class RSSFeed {
+	private List<RSSItem> listview;
+	private int itemCount = 0;
+	private String title, pubDate;
+
+	public RSSFeed() {
+		listview = new Vector(0);
+	}
+
+	//// 添加RssItem条目,返回列表长度
+	public int addItem(RSSItem item) {
+		listview.add(item);
+		itemCount++;
+		return itemCount;
+	}
+
+	public List getList() {
+		return listview;
+	}
+
+	int getItemsCount() {
+		return itemCount;
+	}
+
+	// 根据下标获取RssItem
+	public RSSItem getItem(int location) {
+		return listview.get(location);
+	}
+
+	public List getItemsForList() {
+		List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
+		int SIZE = listview.size();
+		for (int i = 0; i < SIZE; i++) {
+			Map<String, Object> mdMap = new HashMap<String, Object>();
+			mdMap.put(RSSItem.TITLE, listview.get(i).getTitle());
+			mdMap.put(RSSItem.PUBDATE, listview.get(i).getPubDate());
+			data.add(mdMap);
+		}
+		return data;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getPubDate() {
+		return pubDate;
+	}
+
+	public void setPubDate(String pubDate) {
+		this.pubDate = pubDate;
+	}
+}
+```
+```
+public class RSSItem {
+
+	public static String TITLE = "title";
+	public static String PUBDATE = "pubDate";
+	
+
+	private String title = null;
+	private String pubDate = null;
+	private String link = null;
+	private String description = null;
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getPubDate() {
+		return pubDate;
+	}
+
+	public void setPubDate(String pubDate) {
+		this.pubDate = pubDate;
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Override
+	public String toString() {
+		if(title.length()>18){
+			return title.substring(0,18)+"...";
+		}
+		return super.toString();
+	}
+}
+
+```
