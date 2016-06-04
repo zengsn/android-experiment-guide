@@ -122,14 +122,18 @@ activity xml代码：(https://github.com/ZhengQZ123/android-labs/blob/master/app
 
 ###4. RSS阅读器
 简要说明……  
-    1.什么是RSS？
-        RSS 指 Really Simple Syndication（真正简易联合）
-        RSS 使您有能力聚合（syndicate）网站的内容
-        RSS 定义了非常简单的方法来共享和查看标题和内容
-        RSS 文件可被自动更新
-        RSS 允许为不同的网站进行视图的个性化
-        RSS 使用 XML 编写
-    2.一个RSS实例文档
+    <h2>1.什么是 RSS？</h2>
+<ul>
+<li>RSS 指 Really Simple Syndication（真正简易联合）</li>
+<li>RSS 使您有能力聚合（syndicate）网站的内容</li>
+<li>RSS 定义了非常简单的方法来共享和查看标题和内容</li>
+<li>RSS 文件可被自动更新</li>
+<li>RSS 允许为不同的网站进行视图的个性化</li>
+<li>RSS 使用 XML 编写</li>
+</ul>
+
+    <h2>2.一个RSS实例文档</h2>
+   
     RSS 文档使用一种简单的自我描述的语法：
    ```
    <?xml version="1.0" encoding="ISO-8859-1" ?>
@@ -159,9 +163,9 @@ activity xml代码：(https://github.com/ZhengQZ123/android-labs/blob/master/app
 <p>&lt;channel&gt; 元素有三个必需的子元素：</p>
 
 <ul>
-<li>&lt;title&gt; - 定义频道的标题。（比如 w3school 首页）</li>
-<li>&lt;link&gt; - 定义到达频道的超链接。（比如 www.w3school.com.cn）</li>
-<li>&lt;description&gt; - 描述此频道（比如免费的网站建设教程）</li>
+<li>&lt;title&gt; - 定义频道的标题。</li>
+<li>&lt;link&gt; - 定义到达频道的超链接。</li>
+<li>&lt;description&gt; - 描述此频道</li>
 </ul>
 
 <p>每个 &lt;channel&gt; 元素可拥有一个或多个 &lt;item&gt; 元素。</p>
@@ -169,9 +173,9 @@ activity xml代码：(https://github.com/ZhengQZ123/android-labs/blob/master/app
 <p>&lt;item&gt; 元素拥有三个必需的子元素：</p>
 
 <ul>
-<li>&lt;title&gt; - 定义项目的标题。（比如 RSS 教程）</li>
-<li>&lt;link&gt; - 定义到达项目的超链接。（比如 http://www.w3school.com.cn/rss）</li>
-<li>&lt;description&gt; - 描述此项目（比如 w3school 的 RSS 教程）</li>
+<li>&lt;title&gt; - 定义项目的标题。</li>
+<li>&lt;link&gt; - 定义到达项目的超链接。</li>
+<li>&lt;description&gt; - 描述此项目。</li>
 </ul>
 
 <p>最后，后面的两行关闭 &lt;channel&gt; 和 &lt;rss&gt; 元素。</p>
