@@ -123,15 +123,15 @@ activity xml代码：(https://github.com/ZhengQZ123/android-labs/blob/master/app
 ###4. RSS阅读器
 简要说明……  
 1.什么是 RSS？
--RSS 指 Really Simple Syndication（真正简易联合）
--RSS 使您有能力聚合（syndicate）网站的内容
--RSS 定义了非常简单的方法来共享和查看标题和内容
--RSS 文件可被自动更新</li>
--RSS 允许为不同的网站进行视图的个性化
--RSS 使用 XML 编写
+- RSS 指 Really Simple Syndication（真正简易联合）
+- RSS 使您有能力聚合（syndicate）网站的内容
+- RSS 定义了非常简单的方法来共享和查看标题和内容
+- RSS 文件可被自动更新</li>
+- RSS 允许为不同的网站进行视图的个性化
+- RSS 使用 XML 编写
 
 2.一个RSS实例文档
-RSS 文档使用一种简单的自我描述的语法：
+- RSS 文档使用一种简单的自我描述的语法：
    ```
    <?xml version="1.0" encoding="ISO-8859-1" ?>
 <rss version="2.0">
