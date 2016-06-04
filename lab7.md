@@ -487,7 +487,44 @@ public class RSSShowItem extends Activity{
 }
 
 ```
-5.由于要访问网络，故在Manifest.xml文件中添加网络访问权限
+5.由于要访问网络，故在AndroidManifest.xml文件中添加网络访问权限
 ```
+    <?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.hzuapps.androidworks.homeworks.net1314080903220"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:icon="@drawable/rss"
+        android:label="@string/app_name" >
+        <activity
+            android:name=".RSSActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".About"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".RSSList"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".RSS_listItem"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".RSSShowItem"
+            android:label="@string/app_name" />
+
+    </application>
+
+</manifest>
+
 ```
+6.<a href="https://github.com/hzuapps/android-labs/tree/master/app/src/main/java/edu/hzuapps/androidworks/homeworks/net1314080903220">RSS阅读器源码链接</a>
