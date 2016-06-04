@@ -154,23 +154,43 @@ activity xml代码：(https://github.com/ZhengQZ123/android-labs/blob/master/app
 
 </rss>
    ```
-<br>文档中的第一行：XML 声明 - 定义了文档中使用的 XML 版本和字符编码。此例子遵守 1.0 规范，并使用 ISO-8859-1 (Latin-1/West European) 字符集。
-<br>下一行是标识此文档是一个 RSS 文档的 RSS 声明（此例是 RSS version 2.0）。
-<br>下一行含有 <channel> 元素。此元素用于描述 RSS feed。
-<br><channel> 元素有三个必需的子元素：
-<br><title> - 定义频道的标题。（比如 w3school 首页）
-<br><link> - 定义到达频道的超链接。（比如 www.w3school.com.cn）
-<br><description> - 描述此频道（比如免费的网站建设教程）
-<br>每个 <channel> 元素可拥有一个或多个 <item> 元素。
-<br>每个 <item> 元素可定义 RSS feed 中的一篇文章或 "story"。
-<br><item> 元素拥有三个必需的子元素：
-<br><title> - 定义项目的标题。（比如 RSS 教程）
-<br><link> - 定义到达项目的超链接。（比如 http://www.w3school.com.cn/rss）
-<br><description> - 描述此项目（比如 w3school 的 RSS 教程）
-<br>最后，后面的两行关闭 <channel> 和 <rss> 元素。
+<p>文档中的第一行：XML 声明 - 定义了文档中使用的 XML 版本和字符编码。此例子遵守 1.0 规范，并使用 ISO-8859-1 (Latin-1/West European) 字符集。</p>
+<p>下一行是标识此文档是一个 RSS 文档的 RSS 声明（此例是 RSS version 2.0）。</p>
+<p>下一行含有 &lt;channel&gt; 元素。此元素用于描述 RSS feed。</p>
+<p>&lt;channel&gt; 元素有三个必需的子元素：</p>
+
+<ul>
+<li>&lt;title&gt; - 定义频道的标题。（比如 w3school 首页）</li>
+<li>&lt;link&gt; - 定义到达频道的超链接。（比如 www.w3school.com.cn）</li>
+<li>&lt;description&gt; - 描述此频道（比如免费的网站建设教程）</li>
+</ul>
+
+<p>每个 &lt;channel&gt; 元素可拥有一个或多个 &lt;item&gt; 元素。</p>
+<p>每个 &lt;item&gt; 元素可定义 RSS feed 中的一篇文章或 &quot;story&quot;。</p>
+<p>&lt;item&gt; 元素拥有三个必需的子元素：</p>
+
+<ul>
+<li>&lt;title&gt; - 定义项目的标题。（比如 RSS 教程）</li>
+<li>&lt;link&gt; - 定义到达项目的超链接。（比如 http://www.w3school.com.cn/rss）</li>
+<li>&lt;description&gt; - 描述此项目（比如 w3school 的 RSS 教程）</li>
+</ul>
+
+<p>最后，后面的两行关闭 &lt;channel&gt; 和 &lt;rss&gt; 元素。</p>
+
+ 3.解析xml文件
+ <br>这里采用的是SAX解析方法，SAX是一种占用内存少且解析速度快的解析器，它采用的是事件启动，它不需要解析完整个文档，而是按照内容顺序 看文档某个部分是否符合xml语法，如果符合就触发相应的事件，所谓的事件就是些回调方法（callback），这些方法定义在ContentHandler中，下面是其主要方法：
+ - startDocument：当遇到文档的时候就触发这个事件，调用这个方法可以在其中做些预处理工作。
+
+ - startElement(String namespaceURI,String localName,String qName,Attributes atts)：当遇开始标签的时候就会触发这个方法。
+
+ - endElement(String uri,String localName,String name)：当遇到结束标签时触发这个事件，调用此法可以做些善后工作。
+
+ - charachers(char [] ch,int start,int length)：当遇到xml内容时触发这个方法，用new String(ch,start,length)可以接受内容。 
+
 
 详细步骤……  
-1. 获取网络权限
+1. 从网络中获取RSS地址，xml格式
 ```
-    <uses-permission android:name="android.permission.INTERNET"/>  
+   // 从网络获取RSS地址
+	private static String strUrl = "http://rss.it.sohu.com/rss/ityaowen.xml";
 ```
