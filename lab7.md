@@ -73,7 +73,68 @@ public class Myserver {
         }
     }
 ```
+Socket客户端另一个例子
+(1)在AndroidManifest.xml添加网络权限
+```
+<uses-permission android:name="android.permission.INTERNET"/>
+```
+(2)准备好用到的控件，例如以下例子中的控件有：一个连接按钮和一个发送按钮，在点击时分别执行连接服务器的方法和发送消息的方法，在连接和发送时使用的EditText控件分别为ip和send。
+(3)定义一个socket和输出流，如果要接受消息再定义一个输入流
+```
+    Socket socket = null;
+    BufferedWriter writer = null;
+    BufferedReader reader = null;
+```
+(4)连接服务器的方法
+```
+    public void connect() {
+        AsyncTask<Void, String, Void> read = new AsyncTask<Void, String, Void>() {   //使用AsyncTask进行异步操作
+
+            @Override
+            protected Void doInBackground(Void... arg0) {
+                try {
+                    socket = new Socket(ip, 3666);  //连接服务器
+                    writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));  //输出流用来发送消息
+                    reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));  //输入流用来接收消息
+                    publishProgress("连接成功");        //如果连接成功则调用下面的onProgressUpdate，在界面上显示连接成功
+                } catch (UnknownHostException e1) {
+                    Toast.makeText(Net1314080903216Activity.this, "无法建立连接", Toast.LENGTH_SHORT).show();
+                } catch (IOException e1) {
+                    Toast.makeText(Net1314080903216Activity.this, "无法建立连接", Toast.LENGTH_SHORT).show();
+                }
+                return null;
+            }
+
+            @Override
+            protected void onProgressUpdate(String... values) {
+                if (values[0].equals("连接成功")) {
+                    Toast.makeText(Net1314080903216Activity.this, "连接成功！", Toast.LENGTH_SHORT).show();
+
+                }
+                appendtext("服务器："+values[0]+"\n");
+                super.onProgressUpdate(values);
+            }
+        };
+        read.execute();
+    }
+```
+(5)发送消息的方法
+```
+   public void send() {
+        try {
+           appendtext("本端："+send.getText().toString()+"\n");
+            writer.write(send.getText().toString()+"\n");    //获取EditText控件send中的字符串，用连接方法中的输出流发送消息
+            writer.flush();
+            send.setText("");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+```
+客户端完整源代码：https://github.com/hzuapps/android-labs/tree/master/app/src/main/java/edu/hzuapps/androidworks/homeworks/net1314080903216
+
 另一个例子：https://github.com/hzuapps/android-labs/tree/master/app/src/main/java/edu/hzuapps/androidworks/homeworks/net1314080903204/tcp_tester 
+
 
 ###3. 从aqicn.org获取PM2.5信息@ZhengQZ123
 简要说明……  
