@@ -1253,3 +1253,200 @@ public void StartVibrato(){
         //第一个参数是节奏数组
         mVibrator.vibrate(new long[] { 500,200,500,200 },-1);
     }
+
+
+## 11.语音记账助手
+ 语音识别利用百度提供的百度语音包进行开发。  
+百度语音官方资料链接：http://yuyin.baidu.com/  
+百度语音SDK下载链接：http://yuyin.baidu.com/sdk  
+开发者文档中心：http://yuyin.baidu.com/docs  
+（根据自己实际需要选择SDK,此应用使用的是 “语音识别离在线融合SDK”，下载的压缩包中含有开发需要的语音识别开发包和Demo）  
+在使用百度语音开发包之前，需要按要求注册并填写相关应用信息，注册后即可获得使用包的key。
+### 1.添加权限：
+配置AndroidManifest.xml文件：
+在文件中配置增加权限、鉴权信息，注册语音服务，注册对话框等配置。
+
+```
+<uses-permission android:name="android.permission.RECORD_AUDIO" />   //允许应用使用麦克风录音  
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />  //允许获取当前的网络状态，优化录音及网络参数。  
+<uses-permission android:name="android.permission.INTERNET" />   //允许应用联网，发送语音数据至服务器，获得识别结果。  
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />    //获取用户手机的IMEI，用来唯一的标识用户。  
+```
+
+### 2.布局
+在百度的包中已经把语音的对话框写好了，我们可以进行设置，然后根据读取到的设置信息进行显示运行。
+本应用设置有预定界面的对话框可提示音。
+### 3.语音识别：
+语音识别器SpeechRecognizer，使用谷歌系统框架，函数与使用android自有框架基本相同。
+#### 创建实例：
+方法:
+```
+SpeechRecognizer createSpeechRecognizer (Context context, ComponentName serviceComponent);
+```
+  
+参数:context   上下文环境   
+     serviceComponent   用来提供语音识别的服务   
+返回:语音识别器。  
+说明:创建语音识别器。使用谷歌系统框架，使用百度语音识别只需将serviceComponent指定为百度语音提供的服务即可。  
+代码：  
+
+```
+private SpeechRecognizer speechRecognizer;  
+speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this, new ComponentName(this, VoiceRecognitionService.class));
+```
+
+#### 设置语音识别监听器
+方法:
+```
+void setRecognitionListener (RecognitionListener listener)
+```
+参数:listener  监听器   
+说明:设置语音识别监听器，语音识别监听器需要实现RecognitionListener中的接口对语音过程和结果做出处理。  
+代码:  
+```
+speechRecognizer.setRecognitionListener(this);
+```
+##### 开始识别
+方法:
+```
+void  startListening (Intent recognizerIntent)
+```
+参数: recognizerIntent   识别参数  
+说明:所有识别的参数都需要在recognizerIntent中设置。  
+百度语音通过bindParams(Intent intent)进行参数的设置，startListening再根据设置参数进行识别  
+代码:  
+```
+speechRecognizer.startListening(intent);
+```
+##### 停止录音
+方法:
+```
+void  stopListening();
+```  
+说明:停止录音，但是识别将继续。  
+代码:   
+```
+speechRecognizer.stopListening();
+```
+#####取消识别
+方法:void  cancel();  
+说明: 取消本次识别，已有录音也将不再识别。  
+代码:  
+```
+speechRecognizer.cancel();
+```
+##### 销毁
+方法:void  destroy();  
+说明: 销毁语音识别器，释放资源。  
+代码：  
+```
+speechRecognizer.destroy();
+```
+##### 语音识别监听器
+语音识别监听器RecognitionListener，该接口包含如下方法回调。  
+Activity继承RecognitionListener类，重载该类的方法，给语音识别器设置一个语音识别监听器    
+代码:  
+```
+speechRecognizer.setRecognitionListener(this);
+```
+##### 准备就绪
+方法:void  onReadyForSpeech(Bundle params)  
+参数:params  识别参数
+说明:只有当此方法回调之后才能开始说话，否则会影响识别结果。
+##### 开始说话
+方法: void  onBeginningOfSpeech()  
+说明:  当用户开始说话，会回调此方法。
+##### 音量变化
+方法:void  onRmsChanged(float rmsdB)  
+参数:rmsdB  音量值  
+说明：引擎将对每一帧语音回调一次该方法返回音量值。
+##### 获取原始语音  
+方法:void  onBufferReceived(byte[] buffer)  
+参数:buffer  pcm语音数据  
+说明:此方法会被回调多次，buffer是当前帧对应的PCM语音数据，拼接后可得到完整的录音数据。
+##### 说话结束
+方法:void  onEndOfSpeech()  
+说明: 当用户停止说话后，将会回调此方法。  
+##### 识别出错
+方法:void  onError(int error)  
+参数:error  错误码  
+说明: 识别出错，将会回调此方法，调用该方法之后将不再调用onResults方法。  
+代码:
+
+```
+    public void onError(int error) {  
+        status = STATUS_None;  
+        StringBuilder sb = new StringBuilder();  
+        switch (error) {  
+            case SpeechRecognizer.ERROR_AUDIO:  
+                sb.append("音频问题");  
+                break;  
+            case SpeechRecognizer.ERROR_SPEECH_TIMEOUT:  
+                sb.append("没有语音输入");  
+                break;  
+            case SpeechRecognizer.ERROR_CLIENT:  
+                sb.append("其它客户端错误");  
+                break;  
+            case SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS:  
+                sb.append("权限不足");  
+                break;  
+            case SpeechRecognizer.ERROR_NETWORK:  
+                sb.append("网络问题");  
+                break;  
+            case SpeechRecognizer.ERROR_NO_MATCH:  
+                sb.append("没有匹配的识别结果");  
+                break;  
+            case SpeechRecognizer.ERROR_RECOGNIZER_BUSY:  
+                sb.append("引擎忙");  
+                break;  
+            case SpeechRecognizer.ERROR_SERVER:  
+                sb.append("服务端错误");  
+                break;  
+            case SpeechRecognizer.ERROR_NETWORK_TIMEOUT:  
+                sb.append("连接超时");  
+                break;  
+        }  
+        sb.append(":" + error);  
+      
+    }  
+
+```
+##### 识别最终结果
+方法:void  onResults(Bundle results)  
+参数:  results  识别结果  
+说明: 返回最终识别结果，将会回调此方法。  
+代码：    
+```
+@Override  
+    public void onResults(Bundle results) {        
+        status = STATUS_None;  
+        ArrayList<String> nbest = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);        
+        addDataToSql(nbest.get(0));        
+}  
+private  void addDataToSql(String txtresult) {   
+    	String result=txtresult;  
+    	ContentValues cv=new  ContentValues();  
+    	cv.put("result", result);  
+    	dbWrite.insert("Account", null, cv);  
+    	refreshListView();  
+   	}  
+    private void refreshListView(){   
+        dbRead=dbHelper.getReadableDatabase();  
+        Cursor c=dbRead.query("Account", null, null, null, null, null, "Comsumedate desc");  
+        adapter.changeCursor(c);  
+
+    }  
+``` 
+
+将语音识别结果写入数据库然后更新页面，将记录显示到页面上。
+#### 识别临时结果
+方法:void onPartialResults(Bundle partialResults)  
+参数:partialResults   临时识别结果  
+说明:返回临时识别结果，将会回调此方法。
+#### 识别事件返回
+方法:void onEvent(int eventType, Bundle params)  
+参数:eventType  事件类型  
+     eventType   参数  
+说明: 返回识别事件，将会回调此方法。
+
+
