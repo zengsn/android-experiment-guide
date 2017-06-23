@@ -463,6 +463,7 @@
 
 [https://www.toptal.com/designers/subtlepatterns/](https://www.toptal.com/designers/subtlepatterns/)
 
+pull request地址：[https://github.com/hzuapps/android-labs-2017/pull/338](https://github.com/hzuapps/android-labs-2017/pull/338)
 
 **By:cheng**
 
