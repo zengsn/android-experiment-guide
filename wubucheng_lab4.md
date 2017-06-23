@@ -7,7 +7,7 @@
 		
    （1）首先新建一个布局，它放入两个子控件，一个是主屏幕显示的内容-，另一个是滑动菜单中显示的内容
 
- 
+ ```java
 	    <?xml version="1.0" encoding="utf-8"?>
 	    <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	    xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -30,13 +30,13 @@
 	
 	
 	    </android.support.v4.widget.DrawerLayout>
-
+```
 上述布局中将`layout_gravity`设置为start，这个是根据系统语言来判断滑动菜单是在左边还是右边的。布局中引用了一个布局`activity_net1414080903220_rg`，此布局正是主屏幕显示的内容，这里不再赘述，下面重点来讲NavigationView这个Design Support库中的控件，一般来讲项目中直接就可以使用即可，如果报错，可以在build.gradle中添加如下内容：
 `compile 'com.android.support:design:25.2.0'`
 在NavigationView中可以看到`app:menu="@menu/nav_menu"`和`app:headerLayout`这项内容，而nav_menu正是我们的菜单列表，代码如下：
 	
 
-	
+```java	
 		<?xml version="1.0" encoding="utf-8"?>
 		<menu xmlns:android="http://schemas.android.com/apk/res/android">
 		<group android:checkableBehavior="single">
@@ -77,10 +77,11 @@
 			android:layout_above="@id/tv_number"/>
 		
 		</RelativeLayout>
+```
 (2)在Java代码中可以打开DraweLayout的方法为openDrawer,参数为Gravity参数，这里需要与xml中保持一致，因此在这里就是这样：`drawerLayout.openDrawer(GravityCompat.START);`
 
 实现的效果如下：
-![](E:\Androidrep\images\2.png)
+![image](http://oq3l0bzx8.bkt.clouddn.com/2.png)
 
 -------------------
 #### 二、TabLayout的使用
@@ -91,7 +92,7 @@
 	
 （1）新建一个给Fragment使用的布局，代码如下：
 
-
+```java
 		<?xml version="1.0" encoding="utf-8"?>
 		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -134,10 +135,10 @@
 		
 		</LinearLayout>
 
-
+```
 (2)上面的KnowDevToolbar控件是自定义的一个Toolbar，暂时可以不用管，重点来看TabLayout这个控件。在TabLayout中指定style样式为customTabLayout，代码如下：
 
-
+```java
     <style name="customTabLayout" parent="Widget.Design.TabLayout">
         <item name="tabIndicatorColor">?attr/colorPrimary</item>
         <item name="tabIndicatorHeight">2dp</item>
@@ -148,14 +149,16 @@
         <item name="textAllCaps">true</item>
         <item name="tabSelectedTextColor">#fff</item>
     </style>
+  ```
 (3)它指定了指示器颜色，tab的高度、内容边距及大小、点击颜色效果等，下面重点来看Java代码：
 在fragment代码中先定义了tablayout中的每个tab的内容：
-
+```java
 			int texts[]={R.string.android,R.string.ios,R.string.web,R.string.expand};
 			int tags[]={TAG_ANDROID,TAG_IOS,TAG_WEB,TAG_EXPAND};
+```			
 后初始化tablayout,给每个tab设置内容和标签：
 
-
+```java
     private void initTab(View view) {
         devTypeTabLayout=(TabLayout)view.findViewById(R.id.tab_dev_layout);
 
@@ -167,9 +170,10 @@
         }
         devTypeTabLayout.addOnTabSelectedListener(this);
     }
+ ```
 注意上面代码中添加了tablayout的点击事件addOnTabSelectedListener，因此需要实现`TabLayout.OnTabSelectedListener`，有三个方法需要实现：tab点击时：`onTabSelected(TabLayout.Tab tab)`,tab没由点击时：`onTabUnselected(TabLayout.Tab tab)`和在当前tab页再次点击时：`onTabReselected(TabLayout.Tab tab)`，我们可以根据项目选择性的实现其中的方法就好了。
 
-![](E:\Androidrep\images\3.png)
+![image](http://oq3l0bzx8.bkt.clouddn.com/3.png)
 
 
 -------------------	
@@ -181,7 +185,7 @@
 
 （1）以每日头条中的布局为例，代码中只使用了cardview的三个属性，而cardview属性不仅仅这有这些，具体可以参考官方文档。代码如下：
 
-
+```java
 	<?xml version="1.0" encoding="utf-8"?>
 	<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -257,9 +261,9 @@
         </RelativeLayout>
 
 	</android.support.v7.widget.CardView>
-
+```
 （2）上面的代码关注CardView，它在这里是作为父布局的，注意到要使用cardview的属性方法，要添加这行代码：` xmlns:card_view="http://schemas.android.com/apk/res-auto"`其中`card_view`这个名字是可以替换的，在使用cardview的属性时，在前面加上对应的名字就好啦。这里我只设置CardView的背景颜色、圆角大小和阴影。具体效果如下：
-![image](E:\Androidrep\images\4.png)
+![image](http://oq3l0bzx8.bkt.clouddn.com/4.png)
 
 -------------------	
 
@@ -275,7 +279,7 @@
 	
 (1)在本次项目中，我自定义了toolbar，以符合我项目中的效果，下面来简单介绍如何简单自定义了toolbar.
 	
-    
+ ```java   
     <?xml version="1.0" encoding="utf-8"?>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -310,11 +314,12 @@
 	        android:background="@drawable/vector_drawable_icon_share"
 	        android:visibility="visible"/>
     </LinearLayout>`
+ ```   
 布局中定义了两个Button和一个Textiew,分别作为菜单键，分享键和标题显示，可以看到目前效果如下
-![](E:\Androidrep\images\1.png)
+![image](http://oq3l0bzx8.bkt.clouddn.com/1.png)
 
 (2)在values文件夹下新建attr文件，代码如下：
-
+```java
 		<?xml version="1.0" encoding="utf-8"?>
 		<resources>
 		<declare-styleable name="KnowDevToolBar">
@@ -324,10 +329,12 @@
 		<attr name="isHideShareBt" format="boolean"/>
 		</declare-styleable>
 		</resources>
+```		
   这里上面自定义toolbar的属性，及其format，format为reference，代表资源文件的引用，如引用图片等，boolean为true或false值。
 
 (3)在Java代码中，新建一个类叫KnowDevToolbar继承Toolbar，对其构造方法进行操作：
 
+```java
     public KnowDevToolbar(Context context) {
         this(context,null);
     }
@@ -337,9 +344,10 @@
     }
 
     public KnowDevToolbar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {}
+  ```
 重点来看第三个构造方法：第一个参数为上下文，这个没有什么好讲，第二个参数为属性集合，简单的理解为你使用自定义控件时，给其中的属性进行的赋值，产生的集合，第三个参数为默认样式集合，这里可以不管，第三个构造方法的具体内容如下：
 
-
+```java
     public KnowDevToolbar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView();
@@ -362,8 +370,10 @@
        }
 
     }
+ ```
 可以看到我们使用`TintTypedArray`对`styleable`进行读取，styleable的名称就是前面attr中`declare-styleable`的name，实例化TintTypedArray后，就可以用其对象使用相应方法读取相应的属性值，传进去的参数正是styleable的attr name，注意，在后面需要将TintTypedArray回收，回收方法为recycle。上面的三个判断是否为空的方法是用来进行相应的设置操作的，代码如下:
-	
+
+```java	
 	//设置菜单按钮图标
     public void setMenuIcon(int id){
         menuBt.setBackgroundResource(id);
@@ -420,9 +430,11 @@
     public  void setShareButtonOnClickListener(OnClickListener listen){
         shareBt.setOnClickListener(listen);
     }
+ ```
 上面的代码比较简单，主要作用就是暴露方法给调用。
 (3)下面来讲一下如何使用,拿2.2中的布局为例：
 
+```
 	 <edu.hzuapps.androidlabs.homeworks.net1414080903220.knowdev.widget.KnowDevToolbar
 	        android:id="@+id/knowDevToolbar"
 	        android:layout_width="match_parent"
@@ -435,9 +447,11 @@
 	        app:title="@string/dev_article"
 	        >
 	    </edu.hzuapps.androidlabs.homeworks.net1414080903220.knowdev.widget.KnowDevToolbar>
+```	    
 在布局文件中加上包名和自定义控件的名称，形成一个全新的控件，我们在这里只对其隐藏掉分享按钮，还有设置toolbar的标题，而background和minHeight我们引用了系统自身的attr。
 在Java代码中，我们可以这样使用：
 
+```
 		//以回调的形式打开DrawerLayout
         knowDevToolbar.setMenuButtonOnClickListener(new View.OnClickListener() {
             @Override
@@ -448,8 +462,11 @@
 
 由于在布局中已经可以设置了相应的属性，因此可以不必调用设置是否隐藏图标的方法，当然你也可以这样用，例如：
 
+```java
         knowDevToolbar.setMenuIcon(R.drawable.vector_back_net1414080903220);
-        knowDevToolbar.setTitle("每日干货");
+        knowDevToolbar.setTitle("头条新闻");
+```
+效果
 
 -------------------	
 #### 五、总结
