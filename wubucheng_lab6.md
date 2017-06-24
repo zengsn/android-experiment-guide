@@ -5,9 +5,12 @@
 #### 二、LitePal的配置
 - **2.1在Gradle中添加依赖：**
 
-		dependencies {
-		compile 'org.litepal.android:core:1.5.1'
-		}
+	```
+			dependencies {
+			compile 'org.litepal.android:core:1.5.1'
+			}
+	``` 
+
 - **2.1在main目录下新建目录，名称为assets，在此目录下新建一个名为litepal.xml的文件，在文件下加入如下代码，代码示例如下：**
  				
 		 <?xml version="1.0" encoding="utf-8" ?>
@@ -28,25 +31,26 @@
 - **3.1创建数据库**
 创建数据库，只需要一条语句：`Litepal.getDatabase()`即可，注意LitePal使用前需要初始化，一种比较推荐的做法是新建一个application类，在onCreate方法中初始化，例如：
 
-		public class KnowApplication extends LitePalApplication {
-		
-		    public static KnowApplication knowApplication;
-		
-		    @Override
-		    public void onCreate() {
-		        super.onCreate();
-		        if (knowApplication == null) {
-		            knowApplication = this;
-		        }
-		        LitePalHelper litePalHelper=new LitePalHelper();
-		
-		    }
-
-
+```Java
+					public class KnowApplication extends LitePalApplication {
+					
+					    public static KnowApplication knowApplication;
+					
+					    @Override
+					    public void onCreate() {
+					        super.onCreate();
+					        if (knowApplication == null) {
+					            knowApplication = this;
+					        }
+					        LitePalHelper litePalHelper=new LitePalHelper();
+					
+					    }
+			
+``` 
 - **3.2下面来讲一下如何使用LitePal进行增删改查，注意：要执行CRUD，模型类要继承DataSupport才可！下面以News类为例，展示如何操作。**
 
 ##### （1）首先定义一个News类，继承DataSupport
-			
+```java	
 			/**
 			 * @Variable: ctime 新闻发布时间
 			 * @Variable: title 新闻标题
@@ -103,26 +107,28 @@
 			    }
 			
 			}
-
+```
 ##### （2）添加数据：
 例如向News类添加数据：我们可以先对News实例化，或者用News的set方法给属性复制，例如：
-
+```java
             News news=newsList.get(getLayoutPosition());
             news.setCtime("2017-06-23 16:34");
             news.setDescription("自动驾驶技术的领军者不是汽车公司，而是它");
             news.setDescription("腾讯科技");
             news.setPicUrl("http://inews.gtimg.com/newsapp_ls/0/1699675331_300240/0");
             news.save();
+```         
 使用save方法即可将数据保存到数据库中，此方法继承与DataSupport。
 #####（3）更新数据：
 1.更新数据同样可以使用`save`方法，只不过这种更新方法只能对已存储的对象进行操作，只之前执行过save方法或者改对象是从数据库读取出来的。
 
 2.第二种方法则是使用`updateAll`方法:
-			
+```java			
 			news.setCtime("2017-06-23 16:34");
             news.setTitle("自动驾驶技术的领军者不是汽车公司，而是它");
-            news.updateAll("ctime=? and title=?","腾讯科技"," news.updateAll("description=? and picUrl=?","腾讯科技","http://inews.gtimg.com/newsapp_ls/0/1699675331_300240/0");
-实例中将将ctime等于*2017-06-23 16:34*且title是"*自动驾驶技术的领军者不是汽车公司，而是它*"的数据将description更新为*腾讯科技*，picUrl更新为*“http://inews.gtimg.com/newsapp_ls/0/1699675331_300240/0*”
+            news.updateAll("ctime=? and title=?","腾讯科技","      news.updateAll("description=? and     picUrl=?","腾讯科技","http://inews.gtimg.com/newsapp_ls/0/1699675331_300240/0");
+ ```          
+示例中将将ctime等于*2017-06-23 16:34*且title是"*自动驾驶技术的领军者不是汽车公司，而是它*"的数据将description更新为*腾讯科技*，picUrl更新为*“http://inews.gtimg.com/newsapp_ls/0/1699675331_300240/0*”
 
 LitePal的更新数据方法较多，这里这简单地介绍。
 ##### （4）删除数据：
@@ -151,6 +157,8 @@ LitePal的查询方式有很多，具体可以查看官方文档，这里不再�
 
 #### 四、小结
 本次的内容只是简单地介绍了LitePal的入门知识，具体还需要后面再实际项目中灵活使用，如果有学习过hibernate之类的话，理解起来LitePal就简单地多了。
+
+pull request地址：https://github.com/hzuapps/android-labs-2017/pull/416
 
 **By cheng**
 
