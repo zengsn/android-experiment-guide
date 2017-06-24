@@ -83,9 +83,9 @@
 
 实现的效果如下：
 
-<center>
+
 ![image](http://oq3l0bzx8.bkt.clouddn.com/2.png)
-</center>
+
 
 -------------------
 
@@ -179,9 +179,9 @@
  ```
 注意上面代码中添加了tablayout的点击事件addOnTabSelectedListener，因此需要实现`TabLayout.OnTabSelectedListener`，有三个方法需要实现：tab点击时：`onTabSelected(TabLayout.Tab tab)`,tab没由点击时：`onTabUnselected(TabLayout.Tab tab)`和在当前tab页再次点击时：`onTabReselected(TabLayout.Tab tab)`，我们可以根据项目选择性的实现其中的方法就好了。
 
-<center>
+
 ![image](http://oq3l0bzx8.bkt.clouddn.com/3.png)
-</center>
+
 
 -------------------	
 #### 三、CardView的使用
@@ -271,9 +271,10 @@
 ```
 （2）上面的代码关注CardView，它在这里是作为父布局的，注意到要使用cardview的属性方法，要添加这行代码：` xmlns:card_view="http://schemas.android.com/apk/res-auto"`其中`card_view`这个名字是可以替换的，在使用cardview的属性时，在前面加上对应的名字就好啦。这里我只设置CardView的背景颜色、圆角大小和阴影。具体效果如下：
 
-<center>
+
 ![image](http://oq3l0bzx8.bkt.clouddn.com/4.png)
-</center>
+
+
 -------------------	
 
 
@@ -326,9 +327,9 @@
  ```   
 布局中定义了两个Button和一个Textiew,分别作为菜单键，分享键和标题显示，可以看到目前效果如下
 
-<center>
+
 ![image](http://oq3l0bzx8.bkt.clouddn.com/1.png)
-</center>
+
 
 (2)在values文件夹下新建attr文件，代码如下：
 ```xml
@@ -494,7 +495,7 @@
 
 pull request地址：[https://github.com/hzuapps/android-labs-2017/pull/338](https://github.com/hzuapps/android-labs-2017/pull/338)
 
-**By:cheng**
+**By:wubucheng**
 
 **2017.6.23**
 
