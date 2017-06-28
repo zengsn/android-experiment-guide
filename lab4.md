@@ -1,1131 +1,501 @@
-# 实验4：Android界面设计
+#            <center>Material Design简单使用</center>
 
-##8.1 知识点
-###1.   
-
-###2.  
-
-##8.2 实例讲解
-###1. 设计仿微信导航界面
-简要说明……  
-详细步骤……  
-
-###2. 制作黑白棋游戏界面
-简要说明:我做的是一个黑白棋的应用，在主界面是用垂直布局来弄的，中间会涉及到几个相对布局和表格布局，还是相对来说比较简单的。
-详细步骤：
-1.  android:background="@drawable/net13140803138background" //一开始用了这一句调用了drawable里的背景图片作为背景。
-2.  android:orientation="vertical"//然后这里是说明我是垂直方向进行线性布局。
-3.  然后我就开始按照布局放控件了，其中：
-<ImageView
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="0dp"
-        android:scaleType="fitXY"
-        android:id="@+id/top1"
-        android:src="@drawable/net13140803138top"/>   
-这一部分代码即我最上面的一个ImageView，调用了drawable/net13140803138top图片。
-4.  
-  <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        android:layout_height="0dp"
-        android:layout_weight="3">
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="match_parent"
-            android:scaleType="fitCenter"
-            android:src="@drawable/net13140803138daojian"
-            />
-
-
-    </LinearLayout>
-这里我是用了一个水平方向的线性布局，这里值得一提的是，我放了3个位置，但是我只放了一个控件，调用了drawable/net13140803138daojian图片，如果我后面增加了新的功能，可以有位置添加进去。
-5.  这里则是由12个黑白棋子组成的一个布局，由12个黑白棋图片组成，代码会有点长，但是代码其实是比较简单的
-<RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_weight="7"
-        android:layout_height="0dp">
-
-        <GridLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:rowCount="3"
-            android:columnCount="4"
-            android:layout_centerInParent="true"
-            >
-
-            <ImageView
-                android:id="@+id/iv1"
-                android:layout_width="@dimen/width_of_chess1"  android:layout_margin="@dimen/chess_margin1"
-                android:layout_height="@dimen/width_of_chess1"
-                android:scaleType="fitCenter"
-                android:src="@drawable/net13140803138white_chess"/>
-
-            <ImageView
-                android:id="@+id/iv2"
-                android:layout_width="@dimen/width_of_chess1" android:layout_margin="@dimen/chess_margin1"
-                android:scaleType="fitCenter"
-                android:layout_height="@dimen/width_of_chess1"
-                android:src="@drawable/net13140803138black_chess"
-                />
-
-            <ImageView
-                android:id="@+id/iv3"
-                android:layout_width="@dimen/width_of_chess1" android:layout_margin="@dimen/chess_margin1"
-                android:scaleType="fitCenter"
-                android:layout_height="@dimen/width_of_chess1"
-                android:src="@drawable/net13140803138black_chess"
-                />
-
-            <ImageView
-                android:id="@+id/iv4"
-                android:layout_width="@dimen/width_of_chess1" android:layout_margin="@dimen/chess_margin1"
-                android:scaleType="fitCenter"
-                android:src="@drawable/net13140803138white_chess"
-                android:layout_height="@dimen/width_of_chess1" />
-
-            <ImageView
-                android:id="@+id/iv5"
-                android:layout_width="@dimen/width_of_chess1" android:layout_margin="@dimen/chess_margin1"
-                android:scaleType="fitCenter"
-                android:layout_height="@dimen/width_of_chess1"
-                android:src="@drawable/net13140803138black_chess"/>
-
-            <ImageView
-                android:id="@+id/iv6"
-                android:layout_width="@dimen/width_of_chess1" android:layout_margin="@dimen/chess_margin1"
-                android:scaleType="fitCenter"
-                android:layout_height="@dimen/width_of_chess1"
-                android:src="@drawable/net13140803138white_chess"
-                />
-
-            <ImageView
-                android:id="@+id/iv7"
-                android:layout_width="@dimen/width_of_chess1" android:layout_margin="@dimen/chess_margin1"
-                android:scaleType="fitCenter"
-                android:layout_height="@dimen/width_of_chess1"
-                android:src="@drawable/net13140803138white_chess"
-                />
-
-            <ImageView
-                android:id="@+id/iv8"
-                android:layout_width="@dimen/width_of_chess1" android:layout_margin="@dimen/chess_margin1"
-                android:scaleType="fitCenter"
-                android:src="@drawable/net13140803138black_chess"
-                android:layout_height="@dimen/width_of_chess1" />
-
-            <ImageView
-                android:id="@+id/iv9"
-                android:layout_width="@dimen/width_of_chess1" android:layout_margin="@dimen/chess_margin1"
-                android:scaleType="fitCenter"
-                android:layout_height="@dimen/width_of_chess1"
-                android:src="@drawable/net13140803138black_chess"/>
-
-            <ImageView
-                android:id="@+id/iv10"
-                android:layout_width="@dimen/width_of_chess1" android:layout_margin="@dimen/chess_margin1"
-                android:scaleType="fitCenter"
-                android:layout_height="@dimen/width_of_chess1"
-                android:src="@drawable/net13140803138white_chess"
-                />
-
-            <ImageView
-                android:id="@+id/iv11"
-                android:scaleType="fitCenter"
-                android:layout_width="@dimen/width_of_chess1" android:layout_margin="@dimen/chess_margin1"
-                android:layout_height="@dimen/width_of_chess1"
-                android:src="@drawable/net13140803138black_chess"
-                />
-
-            <ImageView
-                android:id="@+id/iv12"
-                android:layout_width="@dimen/width_of_chess1" android:layout_margin="@dimen/chess_margin1"
-                android:scaleType="fitCenter"
-                android:src="@drawable/net13140803138white_chess"
-                android:layout_height="@dimen/width_of_chess1" />
-
-
-        </GridLayout>
-
-    </RelativeLayout>
-
-这一段的代码我是用了一个相对布局，里面在用一个表格布局放在这个相对布局的中间，调用了12个ImageView放在表格布局里面，其中，调用了drawable/net13140803138white_chess和drawable/net13140803138black_chess两个黑白棋子的图片。
-6.  这里我要加一个声音的开关放在右下角，所以要加一个相对布局
-   <RelativeLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
-
-        <CheckBox
-            android:id="@+id/soundSwitch"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sound"
-            android:textColor="#FF000000"/>
-
-    </RelativeLayout>
-所以这里我用了一个相对布局，然后放一个CheckBox在这相对布局里面。
-7.  <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:contentDescription="@string/app_name"
-        android:id="@+id/startButton"
-        android:src="@drawable/net13140803138start"
-        android:scaleType="fitXY"
-        android:background="#00000000"
-        android:layout_marginBottom="6dp"/>
-这里也是调用了一个ImageButton作为一个开始按钮，其中调用了drawable/net13140803138start图片。
-至此，我的主界面就完成了。
-```
-
-```
-###3. 制作练练看游戏界面
-简要说明：海贼王连连看游戏主界面是由Net1314080903126main.xml 文件通过调用Net1314080903126CtrlView.java  Net1314080903126GameView.java
-Net1314080903126OnePieceGame.java 来显示主界面的以及游戏规则和游戏玩法的等。
-详细步骤：
-1.   游戏的主界面是通过Net1314080903126main.xml 来显示的，代码：
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="match_parent"
-	android:layout_height="wrap_content">
-	<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	 	android:layout_width="fill_parent"	android:layout_height="wrap_content">
-	 	<TableRow>
-			<ProgressBar android:id="@+id/pb" android:layout_width="fill_parent"
-				android:layout_height="wrap_content" style="?android:attr/progressBarStyleHorizontal" 
-				android:layout_weight="9"/>
-			<TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
-				android:text="@string/remain_time" android:layout_weight="1"/>
-			<TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
-				android:id="@+id/show_remainTime" android:layout_weight="1"/>	
-		</TableRow>
-	</TableLayout>
-	
-	<edu.hzuapps.androidworks.homeworks.net1314080903126.Net1314080903126CtrlView
-		android:id="@+id/cv"
-		android:layout_width="wrap_content" android:layout_height="fill_parent" />
-</LinearLayout>
-
-其中：<edu.hzuapps.androidworks.homeworks.net1314080903126.Net1314080903126CtrlView
-		android:id="@+id/cv"
-		android:layout_width="wrap_content" android:layout_height="fill_parent" />
-		这是显示海贼王人物的以及人物界面布局。
-然后：<TableRow>
-			<ProgressBar android:id="@+id/pb" android:layout_width="fill_parent"
-				android:layout_height="wrap_content" style="?android:attr/progressBarStyleHorizontal" 
-				android:layout_weight="9"/>
-			<TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
-				android:text="@string/remain_time" android:layout_weight="1"/>
-			<TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
-				android:id="@+id/show_remainTime" android:layout_weight="1"/>	
-		</TableRow>
-		这是显示时间进度条的，以及时间 剩余时间（秒）和倒计时300.
-		这是海贼王连连看的界面的大致介绍。
-2.  下面详细解释一下海贼王连连看。
-（1）.  public class Net1314080903126GameView extends View {
-
-	public final int row = 10;
-	public final int col = 10;
-	public float width;
-	public float height;
-	private int selY;
-	private int selX;
-	public boolean isLine = false;
-	public int grid[][] = new int[row][col];
-	private Rect selRect = new Rect();
-	public int lineType = 0;
-	public final int V_LINE = 1;
-	public final int H_LINE = 1;
-	public final int ONE_C_LINE = 2;
-	public final int TWO_C_LINE = 3;
-	public int much = 0;
-	Point[] p;
-	public int[] imageType = new int[] { R.drawable.net1314080903126aa, R.drawable.net1314080903126bb,
-			R.drawable.net1314080903126cc, R.drawable.net1314080903126dd, R.drawable.net1314080903126ee, R.drawable.net1314080903126ff,
-			R.drawable.net1314080903126gg, R.drawable.net1314080903126hh, R.drawable.net1314080903126ii, R.drawable.net1314080903126jj,
-			R.drawable.net1314080903126kk, R.drawable.net1314080903126ll, R.drawable.net1314080903126mm, R.drawable.net1314080903126nn,
-			R.drawable.net1314080903126oo, R.drawable.net1314080903126pp};
-	public Bitmap[] image;
-	public List<Integer> type = new ArrayList<Integer>();
-	这个是Net1314080903126GameView.java文件中，调用图片。public final int row = 10;
-	public final int col = 10;图片的布局分布十行十列显示。以及显示大小尺寸。调用drawable文件下的图片显示在界面上。
-	
-(2). <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
-				android:text="@string/remain_time" android:layout_weight="1"/>
-	这是显示剩余时间（秒）
-(3). <ProgressBar android:id="@+id/pb" android:layout_width="fill_parent"
-				android:layout_height="wrap_content" style="?android:attr/progressBarStyleHorizontal" 
-				android:layout_weight="9"/>
-	这是显示倒计时时间进度条的。
-(4). <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
-				android:id="@+id/show_remainTime" android:layout_weight="1"/>	
-        这是显示300时间的跑秒。
-(5).public boolean onCreateOptionsMenu(Menu menu) {
-		// TODO Auto-generated method stub
-		menu.add(0, START_ID, 0, R.string.newgame);
-		menu.add(0, REARRARY_ID, 0, R.string.rearrage);
-		menu.add(0, END_ID, 0, R.string.exit);
-		return super.onCreateOptionsMenu(menu);
-	}
-	这是页面上方选项菜单，可以选择（新游戏，重排列以及退出游戏）这三个功能。
-(6).public AlertDialog dialogForSucceed() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setIcon(R.drawable.icon).setMessage(R.string.succeedInfo)
-				.setPositiveButton(R.string.next,
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								// TODO Auto-generated method stub
-								dormant = dormant - 300;
-								newPlay();
-							}
-						}).setNeutralButton(R.string.again_challenge,
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								// TODO Auto-generated method stub
-								newPlay();
-							}
-						});
-		return builder.create();
-	}
-
-	public AlertDialog dialogForFail() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setIcon(R.drawable.icon).setMessage(R.string.failInfo)
-				.setPositiveButton(R.string.again_challenge,
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								// TODO Auto-generated method stub
-								newPlay();
-							}
-						}).setNegativeButton(R.string.exit,
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								// TODO Auto-generated method stub
-								isCancel=false;
-								finish();
-							}
-						});
-		return builder.create();
-	}
-	这是显示300秒内完成游戏提示通往下一关，以及没有完成游戏提示你不气馁。
-以上就是海贼王练练看看游戏界面的详细实现过程。
-	
-
-###4. 制作扫雷游戏界面
-简要说明：这里介绍的是扫雷游戏的初始界面和游戏进行界面的实现方法，它是通过获取每个格子的id值来调用显示相应的背景图片。
-详细步骤： 
-1. 先获取每个格子对象，再给每个格子对象编号或下标获取id值，代码如下：
-```  
-public int getCount() {
-        return level*level;
-    }
-    /**
-     * 方法：获取每个格子对象
-     * @param position 格子编号，位置下标
-     * @return 格子类型的GameGroundEntity
-     * */
-    @Override
-    public GridEntity getItem(int position) {
-//        调用GameGroundEntity中的getEntity方法获取格子对象
-        return gameGround.getEntity(position);
-    }
-    /**
-     * 方法：通过适配器给每个格子对象编号或下标获取id值
-     * @return long类型，在java中，byte和short可自动转换为int，int可自动转换为long
-     * */
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-
-```  
-2.设置格子对象的背景图片， 不同状态下设置不同的背景图片（i00,i13等是图片的名字）
-``` 
-@param grid :格子对象
-     * */
-    public int getRes(GridEntity grid){
-//        设置格子对象的背景图片的ID为0
-        int resID=0;
-//        判断，如果格子对象被标记了且标记正确
-        if(grid.isFlag()&&!grid.isFlagWrong()){
-            resID=R.drawable.i_flag;
-        }
-//        判断，如果格子对象被标记了但标记不正确
-        else if(grid.isFlag()&&grid.isFlagWrong()){
-            resID=R.drawable.i14;
-        }
-//        判断，如果格子对象没有被点击，isShow()属性为false
-        else if(!grid.isShow()){
-            resID=R.drawable.i00;
-        }
-//        判断，格子对象是地雷且非自动显示
-        else if(grid.isBoom()&&!grid.isAutoShow()){
-            resID=R.drawable.i13;
-        }
-//        判断，格子对象是地雷，自动显示
-        else if(grid.isBoom()&&grid.isAutoShow()){
-            resID=R.drawable.i12;
-        }
-//        判断，格子周围没有地雷，是空白格
-        else if(grid.getBoomsCount()==0){
-            resID=R.drawable.i09;
-        }
-//        判断，格子中卫有地雷，个数为1-8个
-        else if(grid.getBoomsCount()!=0){
-//            动态拼接图片名，格式为图片名称，图片类型，资源所在包名
-            resID=context.getResources().getIdentifier("i0"+grid.getBoomsCount(),"drawable",context.getPackageName());
-        }
-        return resID;
-    }
-``` 
-源代码：!https://github.com/hzuapps/android-labs/tree/master/app/src/main/java/edu/hzuapps/androidworks/homeworks/com1314080901110
-
-
-###5. 制作围住神经猫游戏界面 
-简要说明：简单版的围住神经猫游戏的背景是一排排的圆圈，可以用二维数组创建，而这些圆圈有三种状态，分别为猫可以走并可以设置路障的位置（灰色），猫所处的位置（红色），猫不能走并已开启路障的位置（橘色），这些状态定义在Dot类中，显然其应该有坐标X和Y；游戏的背景等我都放在Playground类中，背景是基于SurfaceView开发的，而里面还有很多功能，如猫和已设路障的初始化位置，猫如何躲路障，如何判断路可走，判断处在边界位置等等；最后在Activity中调用Playground。 
-
-详细步骤： 
-1. 建立Dot类，用来记录每个场景中的元素它的X,Y坐标点的状态。并不会直接参与界面的响应和界面的绘制。每一个点都是一个抽象的对象，需要把每一个点抽象为一个类，然后让每一个圆圈继承于这个类，或者直接把它实现为这个类的实例。每个点有三个状态：灰色-猫可走的路径；橘色-路障的状态
-无法改变；红色-猫当前的位置。
-
-```
-public class Net1314080903142Dot {
-	
-	int x,y;//当前点的X，Y坐标
-	int status;//记录这个点的状态
-	//三个表征圆点状态静态常量
-	public static final int STATUS_ON = 1;//已经开启路障的状态
-	public static final int STATUS_OFF = 0;//代表灰色可走路径
-	public static final int STATUS_IN = 9;//猫当前的位置
-    //三个数字不同即可，具体用哪个数字无所谓
-
-	
-       //指定X，Y坐标
-	public Net1314080903142Dot(int x, int y) {
-		super();
-		this.x = x;
-		this.y = y;
-		status = STATUS_OFF;
-	}
-
-       //指定geter和sette方法
-	public int getX() {
-		return x;
-	}
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
-	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
-	}
-
-	//同时设置X，Y坐标的方法
-	public void setXY(int x,int y) {
-		this.y = y;
-		this.x = x;
-	}	
-}
-```
-
-2.建立Playground类，用来绘制界面还有实现游戏的各种算法。以下只详细介绍界面的绘制还有每个圆圈状态转化的过程。
-
-```
-public class Net1314080903142Playground  extends SurfaceView implements OnTouchListener{
-    //界面的响应和界面的绘制在SurfaceView完成，触摸事件的响应通过OnTouchListener接口实现
+#### 一、滑动菜单DrawerLayout的使用
+- **1.1DrawerLayout定义**
+	>DrawerLayout是实现炫酷的滑动菜单的控件，常见的类似QQ的向右滑出菜单栏。
+- **1.2在项目中的使用**
 		
-	
-	private static  int WIDTH = 40;
-	private static final int ROW = 10;//行高：每行储存10个元素
-	private static final int COL = 10;//列宽：每列储存10个元素
-	private static final int BLOCKS = 15;//默认添加的路障数量
-	
-	
-	private Dot Net1314080903142matrix[][];//声明二维数组来存放点元素
-	private Dot Net1314080903142cat;//声明猫这个点
+   （1）首先新建一个布局，它放入两个子控件，一个是主屏幕显示的内容-，另一个是滑动菜单中显示的内容
 
-	public Net1314080903142Playground(Context context) {
-		super(context);//使用Context创建当前类构造函数
-		getHolder().addCallback(callback);//将Callback对象指定给getholder
-		matrix = new Net1314080903142Dot[ROW][COL];//将行高，列宽传递进去，指定数组大小
-		for (int i = 0; i < ROW; i++) {//循环添加数据
-			for (int j = 0; j < COL; j++) {
-				matrix[i][j] = new Net1314080903142Dot(j, i);/*X，Y坐标值和行列值是相反的。
-				即通过查找列值获得X坐标，查找行值获得Y坐标*/
-			}
-		}
-		setOnTouchListener(this);//设定为自己的触摸监听器
-		initGame();//调用游戏初始化
-	}
-
-
-	//坐标反转：封装一个getDot函数实现X，Y坐标反过来传递，所有的操作通过X，Y调用
-	private Net1314080903142Dot getDot(int x,int y) {
-		return matrix[y][x];
-	}
-
-
-       //实现猫移动到下一个点
-       private void MoveTo(Net1314080903142Dot one) {
-		one.setStatus(Net1314080903142Dot.STATUS_IN);//one的状态设置为猫所处的点
-		getDot(cat.getX(), cat.getY()).setStatus(Net1314080903142Dot.STATUS_OFF);;//将猫当前点的状态复位
-		cat.setXY(one.getX(), one.getY());//将猫移动到新的点
-	}
-	//猫的移动
-	private void move() {
-		if (isAtEdge(cat)) {
-			lose();return;/猫处于游戏边缘，失败
-		}
-		Vector<Net1314080903142Dot> avaliable = new Vector<Net1314080903142Dot>();//avaliable容器记录可用点
-		Vector<Net1314080903142Dot> positive = new Vector<Net1314080903142Dot>();//positive容器记录这个方向上可以直接到达屏幕边缘的路径
-		HashMap<Net1314080903142Dot, Integer> al = new HashMap<Net1314080903142Dot, Integer>();//al容器记录方向
-		for (int i = 1; i < 7; i++) {//如果当前猫被6个邻点围住
-			Net1314080903142Dot n = getNeighbour(cat, i);
-			if (n.getStatus() == Net1314080903142Dot.STATUS_OFF) {
-				avaliable.add(n);//如果相邻点可用，把它添加到avaliable记录器中
-				al.put(n, i);//为al传入方向i
-				if (getDistance(n, i) > 0) {
-					positive.add(n);//当它有一个路径可以直接到达屏幕边缘，把n传递进positive中
-					
-				}
-			}
-		}
-                //移动算法的优化
-		if (avaliable.size() == 0) {
-			win();//周围的6个点都不可走，没有可用点，成功围住猫
-		}else if (avaliable.size() == 1) {
-			MoveTo(avaliable.get(0));//只有一个方向可走，可用点有一个，移动到这个可用点上
-		}else{//有多个方向可走
-			Net1314080903142Dot best = null;
-			if (positive.size() != 0 ) {//存在可以直接到达屏幕边缘的走向
-				System.out.println("向前进");
-				int min = 999;//999远大于场景中的所有可用步长，其他数也可
-				for (int i = 0; i < positive.size(); i++) {
-					int a = getDistance(positive.get(i), al.get(positive.get(i)));
-					if (a < min) {
-						min = a;//把最短路径长度传给min
-						best = positive.get(i);//选出拥有最短路径的点
-					}
-				}
-				MoveTo(best);
-			}else {//所有方向都存在路障
-				System.out.println("躲路障");
-				int max = 0;
-				for (int i = 0; i < avaliable.size(); i++) {
-					int k = getDistance(avaliable.get(i), al.get(avaliable.get(i)));
-					if (k <= max) {//所有方向都存在路障，距离k为负数
-						max = k;
-						best = avaliable.get(i);//选出拥有最短路径的点
-					}
-				}
-				MoveTo(best);//移动到最短路径的下一点
-			}
-		}
-	}
-
-
-
-	//实现界面绘制，在redraw方法中将所有元素以图形化显示出来，也就是将它绘制在Canvas对象上
-        private void redraw() {
-		Canvas c = getHolder().lockCanvas();//锁定画布
-		c.drawColor(Color.LTGRAY);//设置颜色为浅灰色
-		Paint paint = new Paint();//创建Paint对象
-		paint.setFlags(Paint.ANTI_ALIAS_FLAG);//开启抗锯齿，优化视频质量
-		
-                //用两个For循环嵌套将所有的点显示到界面中来
-		for (int i = 0; i < ROW; i++) {
-			int offset = 0;//引入偏移量
-			if (i%2 != 0) {
-				offset = WIDTH/2;//对偶数行进行缩进
-			}
-			for (int j = 0; j < COL; j++) {
-				Net1314080903142Dot one = getDot(j, i);//将坐标赋值给内部变量one
-                                //由于每个点对应的三种状态颜色不一样，要用一个switch语句
-				switch (one.getStatus()) {
-				case Net1314080903142Dot.STATUS_OFF:
-					paint.setColor(0xFFEEEEEE);//STATUS_OFF状态时设置颜色为浅灰色
-					break;
-				case Net1314080903142Dot.STATUS_ON:
-					paint.setColor(0xFFFFAA00);//STATUS_ON状态时设置颜色为橘色
-					break;
-				case Net1314080903142Dot.STATUS_IN:
-					paint.setColor(0xFFFF0000);//STATUS_IN状态时设置颜色为红色
-					break;
-
-				default:
-					break;
-				}
-				c.drawOval(new RectF(one.getX()*WIDTH+offset, one.getY()*WIDTH, 
-						(one.getX()+1)*WIDTH+offset, (one.getY()+1)*WIDTH), paint);
-	                             /*在Canvas画布上画椭圆并界定它的上下左右边界宽度且有错位*/
-                           }
-			
-		}
-		getHolder().unlockCanvasAndPost(c);//取消Canvas的锁定，吧绘图内容更新到界面上
-	}
-
-	//为Surfaceview添加Callback
-	Callback callback = new Callback() {//声明并实例化一个Callback接口
-		
-		@Override
-		public void surfaceDestroyed(SurfaceHolder arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		@Override
-		public void surfaceCreated(SurfaceHolder arg0) {
-			// TODO Auto-generated method stub
-			redraw();//执行redraw函数，在界面第一次显示时将指定的内容显示到界面上
-		}
-		
-		@Override
-                 //使用surfaceChanged方法来适配不同的屏幕尺寸
-		public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3) {
-                        
-                        //surfacechanged方法包含四个参数：SurfaceHolder holder，int format，int width，int height
-			// TODO Auto-generated method stub
-			WIDTH = arg2/(COL+1);//需要修改width，即arg2。
-			redraw();//重绘界面
-		}
-	};
-	//游戏初始化：分别对可走路径位置，猫的位置和路障位置进行初始化
-	private void initGame() {
-                //用for循环将所有点设置为STATUS_OFF，即可用状态
-		for (int i = 0; i < ROW; i++) {
-			for (int j = 0; j < COL; j++) {
-				matrix[i][j].setStatus(Net1314080903142Dot.STATUS_OFF);
-			}
-		}
-		cat = new Net1314080903142Dot(4, 5);//设置猫的起始点
-		getDot(4, 5).setStatus(Net1314080903142Dot.STATUS_IN);//把猫的起始点的状态设置为STATUS_IN，才能记录猫的位置
-
-                //用for循环随机的指定15个点的坐标作为路障
-		for (int i = 0; i < BLOCKS;) {
-			int x = (int) ((Math.random()*1000)%COL);
-			int y = (int) ((Math.random()*1000)%ROW);//随机获取1对坐标点
-			if (getDot(x, y).getStatus() == Net1314080903142Dot.STATUS_OFF) {//对当前可用路径点进行选择
-				getDot(x, y).setStatus(Net1314080903142Dot.STATUS_ON);//并把这个点设置为路障
-				i++;//循环内自加避免当前路障被重复添加
-				//System.out.println("Block:"+i);
-			}
-		}
-	}
-
-	@Override
-        //触摸事件的处理
-	public boolean onTouch(View arg0, MotionEvent e) {
-		if (e.getAction() == MotionEvent.ACTION_UP) {/当用户触摸之后手离开屏幕释放的瞬间才对事件进行响应
-             //	Toast.makeText(getContext(), e.getX()+":"+e.getY(), Toast.LENGTH_SHORT).show();
-                        //将屏幕的坐标转换为游戏的坐标
-			int x,y;
-			y = (int) (e.getY()/WIDTH);//横向状态下，奇、偶数行有坐标偏移，而纵向的Y值是不变的，将y进行转换
-			if (y%2 == 0) {
-				x = (int) (e.getX()/WIDTH);//奇数行直接将屏幕的X坐标转换成游戏的X坐标
-			}else {
-				x = (int) ((e.getX()-WIDTH/2)/WIDTH);//偶数行偏移半个元素宽度，故需减去WIDTH/2
-			}
-                         //数组越界异常时，对坐标进行保护
-			if (x+1 > COL || y+1 > ROW) {
-				initGame();//触摸超出边界时初始化游戏
-			}else if(getDot(x, y).getStatus() == Net1314080903142Dot.STATUS_OFF){
-				getDot(x, y).setStatus(Net1314080903142Dot.STATUS_ON);//当这个点可用时被点击之后设定为路障状态
-				move();
-			}
-			redraw();//将改变更新到界面
-		}
-		return true;
-	}
-}
-```
-
-3.最后创建Activity,调用Playground。
-
-```
-public class Net1314080903142Activity extends Activity {
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
-		setContentView(new Net1314080903142Playground(this));//Context把MainActivity的this传递进去
-	}
-
-}
-```
-
-备注：实现该游戏的其他算法未列出，有兴趣的可以在该网站看全部代码：https://github.com/hzuapps/android-labs/issues/139
-
-###6. 自动滚动Banner图片
-
-####简要说明：
-本程序实现的是图片轮播banner，主要运用得到的控件为ViewPager,具体有以下功能：
-
->a.定时功能，每隔5S切换下一张图片。
-
->b.手动切换，可手势左右滑动选择上一张或下一张图片。
->
->c.跳转功能，点击跳转对应Activity
-
-####详细步骤
-
-1.指示器圆点，有两个状态，分别为选中和为选中。用两个shape实现。存放在drawable文件夹下
-
-
-- 未选中状态：net1314080903118_dot_normal.xml
-
-```xml
-
-	<?xml version="1.0" encoding="utf-8"?>
-	<shape xmlns:android="http://schemas.android.com/apk/res/android"
-	    android:shape="oval" >
-	
-	    <solid android:color="#33000000" />
-	
-	    <corners android:radius="5dip" />
-	
-	</shape>
-```
-
-- 选中状态：net1314080903118_dot_press.xml
-
-```xml
-
-	<?xml version="1.0" encoding="utf-8"?>
-	<shape xmlns:android="http://schemas.android.com/apk/res/android"
-	    android:shape="oval" >
-	
-	    <solid android:color="#aaFFFFFF" />
-	
-	    <corners android:radius="5dip" />
-	
-	</shape>
-```
-
-2.布局文件，主要用于显示图片的是ViewPager,九个View分别对应九个圆点，即可同时存放九张图片用于轮播。View的`background`使用上面定义的选中未选中状态。这里我单独抽取出来，使用时在主布局文件用 `include` 引入即可。
-
-- net1314080903118_banner.xml
-
-```xml
-
-	<?xml version="1.0" encoding="utf-8"?>
-	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ ```xml
+	    <?xml version="1.0" encoding="utf-8"?>
+	    <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    xmlns:app="http://schemas.android.com/apk/res-auto"
 	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical" >
+	    android:layout_height="match_parent"
+	    android:id="@+id/dl_left">
+
+
+	    <include layout="@layout/activity_net1414080903220_rg"/>
 	
-	    <FrameLayout
+	    <android.support.design.widget.NavigationView
 	        android:layout_width="match_parent"
-	        android:layout_height="160dp" >
+	        android:layout_height="match_parent"
+	        android:layout_gravity="start"
+	        app:menu="@menu/nav_menu"
+	        app:headerLayout="@layout/net1414080903220_nav_header"
+	        >
 	
-	        <android.support.v4.view.ViewPager
-	            android:id="@+id/vp"
-	            android:layout_width="match_parent"
-	            android:layout_height="160dp" />
+	    </android.support.design.widget.NavigationView>
 	
 	
-	        <LinearLayout
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:layout_marginTop="10dip"
-	            android:layout_gravity="bottom|center_horizontal"
-	            android:layout_marginBottom="10dp"
-	            android:gravity="center" >
+	    </android.support.v4.widget.DrawerLayout>
+```
+上述布局中将`layout_gravity`设置为start，这个是根据系统语言来判断滑动菜单是在左边还是右边的。布局中引用了一个布局`activity_net1414080903220_rg`，此布局正是主屏幕显示的内容，这里不再赘述，下面重点来讲NavigationView这个Design Support库中的控件，一般来讲项目中直接就可以使用即可，如果报错，可以在build.gradle中添加如下内容：
+`compile 'com.android.support:design:25.2.0'`
+在NavigationView中可以看到`app:menu="@menu/nav_menu"`和`app:headerLayout`这项内容，而nav_menu正是我们的菜单列表，代码如下：
 	
-	            <View
-	                android:id="@+id/v_dot0"
-	                android:layout_width="5dip"
-	                android:layout_height="5dip"
-	                android:background="@drawable/net1314080903118_dot_press"
-	                android:layout_marginLeft="1.5dip"
-	                android:layout_marginRight="1.5dip"
-	                android:visibility="invisible" />
+
+```xml	
+		<?xml version="1.0" encoding="utf-8"?>
+		<menu xmlns:android="http://schemas.android.com/apk/res/android">
+		<group android:checkableBehavior="single">
+			<item
+			android:id="@+id/nav_about"
+			android:icon="@drawable/vector_drawable_icon_about_net1414080903220"
+			android:title="@string/about"
+		/>
+		</group>
+		</menu>
+```		
+	该控件定义菜单列表条目，这里仅仅只做了一个“关于”的选项
+	app:headerLayout的代码如下
+
+```xml
+		<?xml version="1.0" encoding="utf-8"?>
+		<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="180dp"
+		android:padding="10dp"
+		android:background="?attr/colorPrimary"
+		>
+			<ImageView
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:src="@drawable/img_head_net1414080903220"
+			android:layout_centerInParent="true"
+			/>
+			<TextView
+			android:id="@+id/tv_number"
+			style="@style/nav_text"
+			android:text="@string/studentNumber"
+			/>
+			
+			<TextView
+			android:id="@+id/tv_author"
+			style="@style/nav_text_author"
+			android:text="@string/author"
+			android:layout_above="@id/tv_number"/>
+		
+		</RelativeLayout>
+```
+(2)在Java代码中可以打开DraweLayout的方法为openDrawer,参数为Gravity参数，这里需要与xml中保持一致，因此在这里就是这样：`drawerLayout.openDrawer(GravityCompat.START);`
+
+实现的效果如下：
+
+
+![image](http://oq3l0bzx8.bkt.clouddn.com/2.png)
+
+
+-------------------
+
+#### 二、TabLayout的使用
+- **2.1TabLayout的定义**
+>TabLayout是实现Material Design效果的选项卡的控件。
+
+- **2.2在项目中的使用**
 	
-	            <View
-	                android:id="@+id/v_dot1"
-	                android:layout_width="5dip"
-	                android:layout_height="5dip"
-	                android:background="@drawable/net1314080903118_dot_normal"
-	                android:layout_marginLeft="1.5dip"
-	                android:layout_marginRight="1.5dip"
-	                android:visibility="invisible"/>
-	
-	            <View
-	                android:id="@+id/v_dot2"
-	                android:layout_width="5dip"
-	                android:layout_height="5dip"
-	                android:background="@drawable/net1314080903118_dot_normal"
-	                android:layout_marginLeft="1.5dip"
-	                android:layout_marginRight="1.5dip"
-	                android:visibility="invisible"/>
-	
-	            <View
-	                android:id="@+id/v_dot3"
-	                android:layout_width="5dip"
-	                android:layout_height="5dip"
-	                android:background="@drawable/net1314080903118_dot_normal"
-	                android:layout_marginLeft="1.5dip"
-	                android:layout_marginRight="1.5dip"
-	                android:visibility="invisible"/>
-	
-	            <View
-	                android:id="@+id/v_dot4"
-	                android:layout_width="5dip"
-	                android:layout_height="5dip"
-	                android:background="@drawable/net1314080903118_dot_normal"
-	                android:layout_marginLeft="1.5dip"
-	                android:layout_marginRight="1.5dip"
-	                android:visibility="invisible" />
-	            <View
-	                android:id="@+id/v_dot5"
-	                android:layout_width="5dip"
-	                android:layout_height="5dip"
-	                android:background="@drawable/net1314080903118_dot_normal"
-	                android:layout_marginLeft="1.5dip"
-	                android:layout_marginRight="1.5dip"
-	                android:visibility="invisible" />
-	            <View
-	                android:id="@+id/v_dot6"
-	                android:layout_width="5dip"
-	                android:layout_height="5dip"
-	                android:background="@drawable/net1314080903118_dot_normal"
-	                android:layout_marginLeft="1.5dip"
-	                android:layout_marginRight="1.5dip"
-	                android:visibility="invisible" />
-	            <View
-	                android:id="@+id/v_dot7"
-	                android:layout_width="5dip"
-	                android:layout_height="5dip"
-	                android:background="@drawable/net1314080903118_dot_normal"
-	                android:layout_marginLeft="1.5dip"
-	                android:layout_marginRight="1.5dip"
-	                android:visibility="invisible" />
-	            <View
-	                android:id="@+id/v_dot8"
-	                android:layout_width="5dip"
-	                android:layout_height="5dip"
-	                android:background="@drawable/net1314080903118_dot_normal"
-	                android:layout_marginLeft="1.5dip"
-	                android:layout_marginRight="1.5dip"
-	                android:visibility="invisible" />
-	        </LinearLayout>
-	    </FrameLayout>
-	
-	</LinearLayout>
+（1）新建一个给Fragment使用的布局，代码如下：
+
+```xml
+		<?xml version="1.0" encoding="utf-8"?>
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:id="@+id/fragment_dev_article"
+		android:orientation="vertical">
+		
+			<edu.hzuapps.androidlabs.homeworks.net1414080903220.knowdev.widget.KnowDevToolbar
+			android:id="@+id/knowDevToolbar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="?attr/colorPrimary"
+			android:minHeight="?attr/actionBarSize"
+			android:layout_alignParentTop="true"
+			android:layout_alignParentStart="true"
+			app:isHideShareBt="true"
+			app:title="@string/dev_article"
+			>
+			</edu.hzuapps.androidlabs.homeworks.net1414080903220.knowdev.widget.KnowDevToolbar>
+			
+			<android.support.design.widget.TabLayout
+			android:id="@+id/tab_dev_layout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			style="@style/customTabLayout"
+			app:tabGravity="fill"
+			app:tabMode="fixed"
+			android:layout_alignParentTop="true"
+			android:layout_alignParentStart="true">
+			
+			</android.support.design.widget.TabLayout>
+			
+		
+			<android.support.v4.view.ViewPager
+			android:id="@+id/vpager"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"		
+			/>
+		
+		</LinearLayout>
 
 ```
+(2)上面的KnowDevToolbar控件是自定义的一个Toolbar，暂时可以不用管，重点来看TabLayout这个控件。在TabLayout中指定style样式为customTabLayout，代码如下：
 
-3.关键代码
->定时切换用到一个类：ScheduledExecutorService
-
->作用是定时执行任务，我们这里要做的定时任务是，5秒执行一次图片切换
+```xml
+    <style name="customTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">?attr/colorPrimary</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabPaddingStart">12dp</item>
+        <item name="tabPaddingEnd">12dp</item>
+        <item name="tabBackground">?attr/colorPrimary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="textAllCaps">true</item>
+        <item name="tabSelectedTextColor">#fff</item>
+    </style>
+  ```
+(3)它指定了指示器颜色，tab的高度、内容边距及大小、点击颜色效果等，下面重点来看Java代码：
+在fragment代码中先定义了tablayout中的每个tab的内容：
 
 ```java
-
-	private void startAd() {
-	        scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-	        // 当Activity显示出来后，每两秒切换一次图片显示
-	        scheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 1, 5,
-	                TimeUnit.SECONDS);
-	    }
-```
-
->定义一个线程,滑动时通知handle响应,同时更改圆点索引号
+			int texts[]={R.string.android,R.string.ios,R.string.web,R.string.expand};
+			int tags[]={TAG_ANDROID,TAG_IOS,TAG_WEB,TAG_EXPAND};
+```			
+后初始化tablayout,给每个tab设置内容和标签：
 
 ```java
+    private void initTab(View view) {
+        devTypeTabLayout=(TabLayout)view.findViewById(R.id.tab_dev_layout);
 
-	private class ScrollTask implements Runnable {
-	
-	        @Override
-	        public void run() {
-	            synchronized (adViewPager) {
-	                currentItem = (currentItem + 1) % imageViews.size();
-	                handler.obtainMessage().sendToTarget();
-	            }
-	        }
-	    }
+        for(int i=0;i<texts.length;i++){
+            TabLayout.Tab tab=devTypeTabLayout.newTab();
+            tab.setText(texts[i]);
+            tab.setTag(tags[i]);
+            devTypeTabLayout.addTab(tab);
+        }
+        devTypeTabLayout.addOnTabSelectedListener(this);
+    }
+ ```
+注意上面代码中添加了tablayout的点击事件addOnTabSelectedListener，因此需要实现`TabLayout.OnTabSelectedListener`，有三个方法需要实现：tab点击时：`onTabSelected(TabLayout.Tab tab)`,tab没由点击时：`onTabUnselected(TabLayout.Tab tab)`和在当前tab页再次点击时：`onTabReselected(TabLayout.Tab tab)`，我们可以根据项目选择性的实现其中的方法就好了。
+
+
+![image](http://oq3l0bzx8.bkt.clouddn.com/3.png)
+
+
+-------------------	
+#### 三、CardView的使用
+- **3.1CardView的定义**
+>CardView是实现卡片式布局效果的控件，实际上是一个FrameLayout，添加了圆角、阴影等效果，看起有立体的效果
+
+- **3.2在项目的使用**
+
+（1）以每日头条中的布局为例，代码中只使用了cardview的三个属性，而cardview属性不仅仅这有这些，具体可以参考官方文档。代码如下：
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+	<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:layout_marginTop="2dp"
+    card_view:cardBackgroundColor="@android:color/white"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            >
+            <ImageView
+                android:id="@+id/img_devarticle"
+                android:layout_width="300px"
+                android:layout_height="300px"
+                android:src="@drawable/example_dev_thumb1414080903220"/>
+
+            <TextView
+                android:id="@+id/title_article"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/img_devarticle"
+                android:paddingTop="15dp"
+                android:paddingRight="3dp"
+                android:maxEms="15"
+                android:maxLines="5"
+                android:ellipsize="end"
+                android:hint="基于 RxSwift 实现的 State 状态管理工具"
+                android:layout_gravity="center"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/tv_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Allen"
+                android:textSize="10sp"
+                android:paddingLeft="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_toRightOf="@id/img_devarticle"
+                android:layout_alignBottom="@id/img_devarticle"
+                />
+
+            <TextView
+                android:id="@+id/time_article"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="于2017-05-15"
+                android:textSize="10sp"
+                android:layout_marginBottom="5dp"
+                android:layout_toRightOf="@id/tv_author"
+                android:layout_alignBottom="@+id/img_devarticle"
+                 />
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignBottom="@id/img_devarticle"
+                android:layout_marginBottom="5dp"
+                android:textSize="10sp"
+                android:paddingRight="5dp"
+                android:text="@string/android"/>
+        </RelativeLayout>
+
+	</android.support.v7.widget.CardView>
 ```
+（2）上面的代码关注CardView，它在这里是作为父布局的，注意到要使用cardview的属性方法，要添加这行代码：` xmlns:card_view="http://schemas.android.com/apk/res-auto"`其中`card_view`这个名字是可以替换的，在使用cardview的属性时，在前面加上对应的名字就好啦。这里我只设置CardView的背景颜色、圆角大小和阴影。具体效果如下：
 
->通过handle来通知ViewPager进行视图切换
+
+![image](http://oq3l0bzx8.bkt.clouddn.com/4.png)
+
+
+-------------------	
+
+
+
+#### 四、Toolbar的使用
+- **4.1Toolbar定义**
+
+	> Toolbar是用来设置标题栏的，类似于actionbar，但比action更为强大，可以实现material design效果
+
+	
+- **4.2在项目中的使用**
+	
+(1)在本次项目中，我自定义了toolbar，以符合我项目中的效果，下面来简单介绍如何简单自定义了toolbar.
+
+ ```xml   
+    <?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+	    <Button
+	        android:id="@+id/toolbar_menu"
+	        android:layout_width="30dp"
+	        android:layout_height="30dp"
+	        android:layout_alignParentLeft="true"
+	        android:layout_marginLeft="10dp"
+	        android:layout_marginTop="5dp"
+	        android:background="@drawable/icon_menu_net1414080903220"
+	        android:visibility="visible"/>
+	
+	    <TextView
+	        android:id="@+id/toolbar_title"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:textSize="23sp"
+	        android:gravity="center"
+	        android:layout_marginTop="1dp"
+	        android:text="@string/news" />
+	
+	    <Button
+	        android:id="@+id/toolbar_share"
+	        android:layout_width="30dp"
+	        android:layout_height="30dp"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginRight="10dp"
+	        android:background="@drawable/vector_drawable_icon_share"
+	        android:visibility="visible"/>
+    </LinearLayout>`
+ ```   
+布局中定义了两个Button和一个Textiew,分别作为菜单键，分享键和标题显示，可以看到目前效果如下
+
+
+![image](http://oq3l0bzx8.bkt.clouddn.com/1.png)
+
+
+(2)在values文件夹下新建attr文件，代码如下：
+```xml
+		<?xml version="1.0" encoding="utf-8"?>
+		<resources>
+		<declare-styleable name="KnowDevToolBar">
+		<attr name="toolbarMenuIcon" format="reference"/>
+		<attr name="toolbarTile" format="reference"/>
+		<attr name="toolbarShareIcon" format="reference"/>
+		<attr name="isHideShareBt" format="boolean"/>
+		</declare-styleable>
+		</resources>
+```		
+  这里上面自定义toolbar的属性，及其format，format为reference，代表资源文件的引用，如引用图片等，boolean为true或false值。
+
+(3)在Java代码中，新建一个类叫KnowDevToolbar继承Toolbar，对其构造方法进行操作：
 
 ```java
+    public KnowDevToolbar(Context context) {
+        this(context,null);
+    }
 
-	private Handler handler = new Handler() {
-	        public void handleMessage(android.os.Message msg) {
-	            adViewPager.setCurrentItem(currentItem);
-	        };
-	    };
+    public KnowDevToolbar(Context context, @Nullable AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public KnowDevToolbar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {}
 ```
-
->异步线程加载网络图片，具体代码我封装在`Net1314080903118MyRequest.java`中，详情可查看最后的链接。
-
-4.具体代码如下：
+重点来看第三个构造方法：第一个参数为上下文，这个没有什么好讲，第二个参数为属性集合，简单的理解为你使用自定义控件时，给其中的属性进行的赋值，产生的集合，第三个参数为默认样式集合，这里可以不管，第三个构造方法的具体内容如下：
 
 ```java
-	
-	public class BannerTestActivity extends AppCompatActivity {
-	
-	    private Context mContext;
-	    private ViewPager adViewPager;
-	    private List<ImageView> imageViews;// 滑动的图片集合
-	    private List<View> dots; // 图片标题正文的那些点
-	    private List<View> dotList;
-	
-	    private int currentItem = 0; // 当前图片的索引号
-	    // 定义的五个指示点
-	    private View dot0,dot1,dot2,dot3,dot4,dot5,dot6,dot7,dot8;
-	
-	    // 定时任务
-	    private ScheduledExecutorService scheduledExecutorService;
-	
-	    // 轮播banner的数据
-	    private List<String> mDataList = null;
-	
-	    private Handler handler = new Handler() {
-	        public void handleMessage(android.os.Message msg) {
-	            adViewPager.setCurrentItem(currentItem);
-	        };
-	    };
-	
-	    @Override
-	    protected void onCreate(@Nullable Bundle savedInstanceState) {
-	        super.onCreate(savedInstanceState);
-	        setContentView(R.layout.net1314080903118);
-	        setTitle("Net1314080903118");
-	        mContext = BannerTestActivity.this;
-	        initDatas();
-	        initView();
-	        startAd();
-	    }
-	
-	    /**
-	     * 添加九张图片的数据，用作模拟数据
-	     */
-	    private void initDatas() {
-	        mDataList = new ArrayList<>();
-	        mDataList.add("http://image.wufazhuce.com/Fi7nIAI3UFK4x42mwu4g18O3s8JO");
-	        mDataList.add("http://image.wufazhuce.com/Fn8JdRZ1g9IVbfSxrdAD6zYFVz3h");
-	        mDataList.add("http://image.wufazhuce.com/FjJPOSVbypiddiRbyHrws7AN6NlX");
-	        mDataList.add("http://image.wufazhuce.com/FiyEgeiSFJFLrOQxerXZOY-50LQr");
-	        mDataList.add("http://image.wufazhuce.com/Fg-EwcAuXvdd2ZvOQI8ym4EToRot");
-	        mDataList.add("http://image.wufazhuce.com/Fi7nIAI3UFK4x42mwu4g18O3s8JO");
-	        mDataList.add("http://image.wufazhuce.com/Fn8JdRZ1g9IVbfSxrdAD6zYFVz3h");
-	        mDataList.add("http://image.wufazhuce.com/FjJPOSVbypiddiRbyHrws7AN6NlX");
-	        mDataList.add("http://image.wufazhuce.com/FiyEgeiSFJFLrOQxerXZOY-50LQr");
-	        mDataList.add("http://image.wufazhuce.com/Fg-EwcAuXvdd2ZvOQI8ym4EToRot");
-	        mDataList.add("http://image.wufazhuce.com/Fi7nIAI3UFK4x42mwu4g18O3s8JO");
-	    }
-	
-	
-	    private void initView() {
-	        imageViews = new ArrayList<ImageView>();
-	        // 点
-	        dots = new ArrayList<View>();
-	        dotList = new ArrayList<View>();
-	        dot0 = findViewById(R.id.v_dot0);
-	        dot1 = findViewById(R.id.v_dot1);
-	        dot2 = findViewById(R.id.v_dot2);
-	        dot3 = findViewById(R.id.v_dot3);
-	        dot4 = findViewById(R.id.v_dot4);
-	        dot5 = findViewById(R.id.v_dot5);
-	        dot6 = findViewById(R.id.v_dot6);
-	        dot7 = findViewById(R.id.v_dot7);
-	        dot8 = findViewById(R.id.v_dot8);
-	        dots.add(dot0);
-	        dots.add(dot1);
-	        dots.add(dot2);
-	        dots.add(dot3);
-	        dots.add(dot4);
-	        dots.add(dot5);
-	        dots.add(dot6);
-	        dots.add(dot7);
-	        dots.add(dot8);
-	
-	        adViewPager = (ViewPager) findViewById(R.id.vp);
-	
-	        loadViewPager();
-	    }
-	
-	    private void addDynamicView() {
-	        // 动态添加图片和下面指示的圆点
-	        // 初始化图片资源
-	        for (int i = 0; i < mDataList.size(); i++) {
-	            ImageView imageView = new ImageView(mContext);
-	            new Net1314080903118MyRequest(mContext).getImage(mDataList.get(i),imageView);
-	            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-	            imageViews.add(imageView);
-	            dots.get(i).setVisibility(View.VISIBLE);
-	            dotList.add(dots.get(i));
-	        }
-	
-	    }
-	
-	
-	    /**
-	     * 定时任务，5s更换一次
-	     */
-	    private void startAd() {
-	        scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-	        // 当Activity显示出来后，每两秒切换一次图片显示
-	        scheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 1, 5,
-	                TimeUnit.SECONDS);
-	    }
-	
-	
-	    /**
-	     * 自定义线程，滑动时通知handle响应
-	     */
-	    private class ScrollTask implements Runnable {
-	
-	        @Override
-	        public void run() {
-	            synchronized (adViewPager) {
-	                currentItem = (currentItem + 1) % imageViews.size();
-	                handler.obtainMessage().sendToTarget();
-	            }
-	        }
-	    }
-	
-	    @Override
-	    public void onStop() {
-	        super.onStop();
-	        // 当Activity不可见的时候停止切换
-	        scheduledExecutorService.shutdown();
-	    }
-	
-	    /**
-	     * 重写ViewPager，改变圆点是否选中状态
-	     * 在这里我们不需要重写ViewPager的滑动动作
-	     */
-	    private class MyPageChangeListener implements ViewPager.OnPageChangeListener {
-	
-	        private int oldPosition = 0;
-	
-	        @Override
-	        public void onPageScrollStateChanged(int arg0) {
-	
-	        }
-	
-	        @Override
-	        public void onPageScrolled(int arg0, float arg1, int arg2) {
-	
-	        }
-	
-	        @Override
-	        public void onPageSelected(int position) {
-	            currentItem = position;
-	            dots.get(oldPosition).setBackgroundResource(R.drawable.net1314080903118_dot_normal);
-	            dots.get(position).setBackgroundResource(R.drawable.net1314080903118_dot_press);
-	            oldPosition = position;
-	        }
-	    }
-	
-	    private void loadViewPager() {
-	        addDynamicView();
-	        // 设置填充ViewPager页面的适配器
-	        adViewPager.setAdapter(new Net1314080903118MyAdapter(mContext,mDataList, imageViews));
-	        // 设置一个监听器，当ViewPager中的页面改变时调用
-	        adViewPager.setOnPageChangeListener(new MyPageChangeListener());
-	    }
-	
-	    /**
-	     * 自定义ViewPager的适配器，具体点击图片的跳转逻辑在instantiateItem中实现
-	     */
-	    public class Net1314080903118MyAdapter extends PagerAdapter {
-	
-	        private List<String> DataList;
-	        private List<ImageView> imageList;
-	        private Context mContext;
-	
-	        public Net1314080903118MyAdapter(Context context,List<String> adList,List<ImageView> imageViews){
-	            this.DataList = adList;
-	            this.imageList = imageViews;
-	            this.mContext = context;
-	        }
-	
-	        @Override
-	        public int getCount() {
-	            return DataList.size();
-	        }
-	
-	        @Override
-	        public Object instantiateItem(ViewGroup container, int position) {
-	            ImageView iv = imageList.get(position);
-	            ((ViewPager) container).addView(iv);
-	            // 在这个方法里面设置图片的点击事件
-	            iv.setOnClickListener(new View.OnClickListener() {
-	
-	                @Override
-	                public void onClick(View v) {
-	                    // 处理跳转逻辑
-	                }
-	            });
-	            return iv;
-	        }
-	
-	        @Override
-	        public void destroyItem(View arg0, int arg1, Object arg2) {
-	            ((ViewPager) arg0).removeView((View) arg2);
-	        }
-	
-	        @Override
-	        public boolean isViewFromObject(View arg0, Object arg1) {
-	            return arg0 == arg1;
-	        }
-	
-	        @Override
-	        public void restoreState(Parcelable arg0, ClassLoader arg1) {
-	
-	        }
-	
-	        @Override
-	        public Parcelable saveState() {
-	            return null;
-	        }
-	
-	        @Override
-	        public void startUpdate(View arg0) {
-	
-	        }
-	
-	        @Override
-	        public void finishUpdate(View arg0) {
-	
-	        }
-	
-	    }
-	}
+    public KnowDevToolbar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initView();
+       if(attrs!=null){
 
+           final TintTypedArray tintTypedArray = TintTypedArray.obtainStyledAttributes(getContext(), attrs, R.styleable.KnowDevToolBar, defStyleAttr, 0);
+           final Drawable menuIcon=tintTypedArray.getDrawable(R.styleable.KnowDevToolBar_toolbarMenuIcon);
+           final Drawable shareIcon=tintTypedArray.getDrawable(R.styleable.KnowDevToolBar_toolbarShareIcon);
+           boolean isHideShareBt=tintTypedArray.getBoolean(R.styleable.KnowDevToolBar_isHideShareBt,false);
+           if(menuIcon!=null){
+               setMenuIcon(menuIcon);
+           }
+           if(shareIcon!=null){
+               setShareIcon(shareIcon);
+           }
+           if(isHideShareBt){
+               isHideShareBt(true);
+           }
+           tintTypedArray.recycle();
+       }
+
+    }
+```
+可以看到我们使用`TintTypedArray`对`styleable`进行读取，styleable的名称就是前面attr中`declare-styleable`的name，实例化TintTypedArray后，就可以用其对象使用相应方法读取相应的属性值，传进去的参数正是styleable的attr name，注意，在后面需要将TintTypedArray回收，回收方法为recycle。上面的三个判断是否为空的方法是用来进行相应的设置操作的，代码如下:
+
+```java	
+	//设置菜单按钮图标
+    public void setMenuIcon(int id){
+        menuBt.setBackgroundResource(id);
+    }
+
+    public void setMenuIcon(Drawable menuIcon) {
+        if(menuBt!=null){
+            menuBt.setBackground(menuIcon);
+        }
+    }
+	
+	//设置title内容
+    @Override
+    public void setTitle(int toolTile) {
+        setTitle(getContext().getText(toolTile));
+
+    }
+
+    @Override
+    public void setTitle(CharSequence tooltitle){
+        initView();
+        if(title!=null){
+            title.setText(tooltitle);
+        }
+
+    }
+	
+	//设置分享按钮图标
+    public void setShareIcon(Drawable menuIcon) {
+        if (shareBt != null) {
+            shareBt.setBackground(menuIcon);
+        }
+    }
+	
+	//设置是否隐藏分享图标
+    public void isHideShareBt(boolean flag){
+        if(shareBt!=null){
+            if(flag==true){
+                shareBt.setVisibility(GONE);
+            }else{
+                shareBt.setVisibility(VISIBLE);
+            }
+
+        }
+    }
+	
+	//设置菜单按钮点击事件
+    public  void setMenuButtonOnClickListener(OnClickListener listen){
+        menuBt.setOnClickListener(listen);
+
+    }
+
+	//设置分享按钮点击事件
+    public  void setShareButtonOnClickListener(OnClickListener listen){
+        shareBt.setOnClickListener(listen);
+    }
+```
+上面的代码比较简单，主要作用就是暴露方法给调用。
+(3)下面来讲一下如何使用,拿2.2中的布局为例：
+
+```xml
+	 <edu.hzuapps.androidlabs.homeworks.net1414080903220.knowdev.widget.KnowDevToolbar
+	        android:id="@+id/knowDevToolbar"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:background="?attr/colorPrimary"
+	        android:minHeight="?attr/actionBarSize"
+	        android:layout_alignParentTop="true"
+	        android:layout_alignParentStart="true"
+	        app:isHideShareBt="true"
+	        app:title="@string/dev_article"
+	        >
+	    </edu.hzuapps.androidlabs.homeworks.net1414080903220.knowdev.widget.KnowDevToolbar>
+```	    
+在布局文件中加上包名和自定义控件的名称，形成一个全新的控件，我们在这里只对其隐藏掉分享按钮，还有设置toolbar的标题，而background和minHeight我们引用了系统自身的attr。
+在Java代码中，我们可以这样使用：
+
+```java
+		//以回调的形式打开DrawerLayout
+        knowDevToolbar.setMenuButtonOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        })
+```
+由于在布局中已经可以设置了相应的属性，因此可以不必调用设置是否隐藏图标的方法，当然你也可以这样用，例如：
+
+```java
+        knowDevToolbar.setMenuIcon(R.drawable.vector_back_net1414080903220);
+        knowDevToolbar.setTitle("头条新闻");
 ```
 
->备注：完整代码请访问以下链接
 
-[https://github.com/hzuapps/android-labs/issues/139](https://github.com/hzuapps/android-labs/issues/139 "https://github.com/hzuapps/android-labs/issues/139")
+-------------------	
+#### 五、总结
+以上内容就是本次项目中使用到的Material Design的知识了，由于本人水平有限，上述内容可能会有纰漏，大家以官方文档为准，且上面的代码是本人实际项目中用到的，并不一定适合其他项目，但是知识都是相通，最后附上几个Material Design的配色和图片网站：
+
+[https://material.io/icons/](https://material.io/icons/)
+
+[https://www.materialpalette.com/](https://www.materialpalette.com/)
+
+[https://dribbble.com/](https://dribbble.com/)
+
+[https://www.toptal.com/designers/subtlepatterns/](https://www.toptal.com/designers/subtlepatterns/)
+
+pull request地址：[https://github.com/hzuapps/android-labs-2017/pull/338](https://github.com/hzuapps/android-labs-2017/pull/338)
+
+**By:wubucheng**
+
+**2017.6.23**
 
