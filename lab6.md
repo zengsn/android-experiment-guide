@@ -119,8 +119,10 @@
             news.save();
 ```         
 使用save方法即可将数据保存到数据库中，此方法继承与DataSupport。
+
 #####（3）更新数据：
-1.更新数据同样可以使用`save`方法，只不过这种更新方法只能对已存储的对象进行操作，只之前执行过save方法或者改对象是从数据库读取出来的。
+
+1.更新数据同样可以使用`save`方法，只不过这种更新方法只能对已存储的对象进行操作，即之前执行过save方法或者该对象是从数据库读取出来的。
 
 2.第二种方法则是使用`updateAll`方法:
 ```java			
@@ -131,7 +133,9 @@
 示例中将将ctime等于*2017-06-23 16:34*且title是"*自动驾驶技术的领军者不是汽车公司，而是它*"的数据将description更新为*腾讯科技*，picUrl更新为*“http://inews.gtimg.com/newsapp_ls/0/1699675331_300240/0*”
 
 LitePal的更新数据方法较多，这里这简单地介绍。
+
 ##### （4）删除数据：
+
 1.第一种是使用`delete`方法删除对象，改方法同样是针对已存储对象的。
 
 2.第二种是`deleteAll`方法:
@@ -139,6 +143,7 @@ LitePal的更新数据方法较多，这里这简单地介绍。
      DataSupport.deleteAll(News.class,"description<?","腾讯科技");
 deleteAll方法中第一个为模型类名称，这里指定为News.class，第二个参数为description<?，它即代表要删除数据的条件，后面的是条件值，需要注意的是实际上deleteAll除第一个参数为模型类名称外，后面并没有限制参数的个数，即后面是 `String... conditions`
 ##### （5）查询数据：
+
 1.查询所有数据可以用：
 
    	 List<News>newsList=DataSupport.findAll(News.class);
